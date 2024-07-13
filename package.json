@@ -3,9 +3,11 @@
   "private": true,
   "version": "1.0.0",
   "description": "Ankhorage CMS",
+  "files": ["dist","index.js"],
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "convert": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -21,5 +23,11 @@
   "bugs": {
     "url": "https://github.com/artiphishle/ankh-cms/issues"
   },
-  "homepage": "https://github.com/artiphishle/ankh-cms#readme"
+  "homepage": "https://github.com/artiphishle/ankh-cms#readme",
+  "dependencies": {
+    "ankh-css": "^1.1.0",
+    "ankh-hook": "^1.0.0",
+    "ankh-runner": "^1.0.0",
+    "ankh-ui": "^1.0.0"
+  }
 }
