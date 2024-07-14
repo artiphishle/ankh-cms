@@ -1,6 +1,6 @@
 {
   "name": "ankh-cms",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "bin": {
     "create-cms": "index.js"
   },
@@ -9,6 +9,7 @@
     "dist",
     "index.js"
   ],
+  "type": "module",
   "types": "dist/index.d.ts",
   "main": "index.js",
   "scripts": {
@@ -33,7 +34,7 @@
   "dependencies": {
     "ankh-css": "^1.1.0",
     "ankh-hook": "^1.0.3",
-    "ankh-runner": "^1.0.2",
+    "ankh-runner": "^1.0.3",
     "react-hotkeys-hook": "^4.5.0",
     "react-use": "^17.5.0"
   },
