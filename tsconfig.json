@@ -16,6 +16,6 @@
     "strict": true,
     "target": "esnext"
   },
-  "include": ["lib/*.ts", "./index.js"],
+  "include": ["lib/*.ts", "index.js"],
   "exclude": ["node_modules"]
 }
