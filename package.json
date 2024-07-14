@@ -1,12 +1,20 @@
 {
   "name": "ankh-cms",
   "version": "1.0.0",
-  "bin": {"create-cms": "create-pages --package ankh-runner $1"},
+  "bin": {
+    "create-cms": "./index.js"
+  },
   "description": "Ankhorage CMS",
-  "files": ["dist","index.js"],
+  "files": [
+    "dist",
+    "index.js"
+  ],
   "types": "dist/index.d.ts",
   "main": "index.js",
-  "scripts": {"build": "tsc","prepublish": "tsc"},
+  "scripts": {
+    "build": "tsc",
+    "prepublish": "tsc"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/artiphishle/ankh-cms.git"
@@ -24,10 +32,12 @@
   "homepage": "https://github.com/artiphishle/ankh-cms#readme",
   "dependencies": {
     "ankh-css": "^1.1.0",
-    "ankh-hook": "^1.0.3"
+    "ankh-hook": "^1.0.3",
+    "ankh-runner": "^1.0.2",
+    "react-hotkeys-hook": "^4.5.0",
+    "react-use": "^17.5.0"
   },
   "devDependencies": {
-    "ankh-runner": "^1.0.0",
     "typescript": "^5.5.3"
   }
 }
