@@ -1,6 +1,6 @@
 {
   "name": "ankh-cms",
-  "version": "1.0.42",
+  "version": "1.1.13",
   "bin": {
     "ankh-cms": "index.js"
   },
@@ -34,12 +34,11 @@
   "homepage": "https://github.com/artiphishle/ankh-cms#readme",
   "dependencies": {
     "ankh-css": "^1.2.2",
-    "ankh-hook": "^1.0.5",
+    "ankh-hook": "^1.0.7",
     "ankh-runner": "^1.0.5",
+    "ankh-ui": "^1.0.9",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-hotkeys-hook": "^4.5.0",
-    "react-use": "^17.5.0"
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@types/node": "^20.14.10",
