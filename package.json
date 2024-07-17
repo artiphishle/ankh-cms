@@ -32,9 +32,9 @@
   },
   "homepage": "https://github.com/artiphishle/ankh-cms#readme",
   "dependencies": {
-    "ankh-css": "^1.1.0",
-    "ankh-hook": "^1.0.3",
-    "ankh-runner": "^1.0.3",
+    "ankh-css": "^1.2.2",
+    "ankh-hook": "^1.0.5",
+    "ankh-runner": "^1.0.5",
     "react-hotkeys-hook": "^4.5.0",
     "react-use": "^17.5.0"
   },
