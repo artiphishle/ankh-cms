@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 // export * from "./dist/types.d.ts";
 import {execSync} from "child_process";
 
