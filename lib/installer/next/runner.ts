@@ -1,63 +1,41 @@
-#!/usr/bin/env node
+import {resolve} from "path";
+import {execSync} from 'child_process';
+import {cpSync, existsSync, mkdirSync, readFileSync, rmdirSync, rmSync} from "fs";
 
-import { execSync } from 'child_process';
+console.log("Generating app...");
 
-const [outDir] = process.argv;
-const libDir = './lib';
-const distDir = './dist/next';
-console.log('------>' , outDir);
+// Get the current directory name
+const cmsDir = process.argv[2];
+const outDir = process.cwd();
+const libDir = resolve(cmsDir,'lib/');
+const distDir = resolve(outDir, 'next/');
+const publicDir = resolve(distDir, 'public/');
+const pagesDir = resolve(distDir, "src/app/(pages)")
+const config = JSON.parse(readFileSync(resolve(outDir, "config.json"), "utf8"));
 
-function clear() {
-  execSync(`rm -rf ${distDir} && mkdir ${distDir}`);
-}
+// Clear
+console.log("1. Clearing");
+if(existsSync(distDir)) rmdirSync(distDir);
+mkdirSync(distDir);
 
-function install() {
-  const result = execSync(
-    `npx create-next-app@latest ${distDir} --ts --app --src-dir --no-eslint --no-import-alias --no-tailwind`,
-    {
-      encoding: 'utf8',
-    }
-  );
-  console.log(result);
-}
+console.log("2. Installing");
+execSync(`npx create-next-app@latest ${distDir} --ts --app --src-dir --no-eslint --no-import-alias --no-tailwind`, {encoding: 'utf8'});
 
-function patchNextConfigMjs() {
-  execSync(`cp ${libDir}/installer/next/templates/next.config.mjs ${distDir}`);
-}
+console.log("3. Patch next.config.mjs");
+cpSync(resolve(libDir, "installer/next/templates/next.config.mjs"), resolve(distDir, "next.config.mjs"));
 
-function patchPublicDir() {
-  execSync(`rm -rf ${distDir}/public && mkdir ${distDir}/public`);
-}
+console.log("4. Patch public/");
+rmSync(publicDir, {recursive: true, force: true});
+mkdirSync(publicDir);
 
-function patchGlobalsCss() {
-  execSync(`cp ${libDir}/installer/next/templates/globals.css ${distDir}`);
-}
+console.log("5. Patch globals.css");
+cpSync(resolve(libDir, "installer/next/templates/globals.css"), resolve(distDir, "src/app/globals.css"));
 
-function generatePages() {
-  console.log('skip page generation...');
-}
+console.log("6. Generate pages");
+mkdirSync(pagesDir);
+config.pages?.forEach((page: any) => {
+  mkdirSync(resolve(pagesDir, page.name));
+});
 
-function format() {
-  execSync('prettier --write .');
-}
-
-clear();
-install();
-patchNextConfigMjs();
-patchPublicDir();
-patchGlobalsCss();
-generatePages();
-format();
-
-/**
- * @startjson {
-"pages": [
-  {
-    "name": "home"
-    }  
-  ]
-}
-@endjson
- */
-
-process.exit(0);
+console.log("7. Prettier formatting");
+execSync(`prettier --write ${distDir}`);

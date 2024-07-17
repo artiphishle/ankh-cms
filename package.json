@@ -1,11 +1,12 @@
 {
   "name": "ankh-cms",
-  "version": "1.0.11",
+  "version": "1.0.42",
   "bin": {
     "ankh-cms": "index.js"
   },
   "description": "Ankhorage CMS",
   "files": [
+    "lib",
     "dist",
     "index.js"
   ],
@@ -35,11 +36,15 @@
     "ankh-css": "^1.2.2",
     "ankh-hook": "^1.0.5",
     "ankh-runner": "^1.0.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-hotkeys-hook": "^4.5.0",
     "react-use": "^17.5.0"
   },
   "devDependencies": {
     "@types/node": "^20.14.10",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
     "typescript": "^5.5.3"
   }
 }
