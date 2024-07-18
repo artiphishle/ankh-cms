@@ -9,14 +9,17 @@ importers:
   .:
     dependencies:
       ankh-css:
-        specifier: ^1.2.2
-        version: 1.2.2(postcss@8.4.31)
+        specifier: ^1.3.0
+        version: 1.3.0(postcss@8.4.31)
       ankh-hook:
         specifier: ^1.0.10
         version: 1.0.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       ankh-ui:
-        specifier: ^1.0.12
-        version: 1.0.12
+        specifier: ^1.0.23
+        version: 1.0.23
+      cssnano:
+        specifier: ^7.0.4
+        version: 7.0.4(postcss@8.4.31)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -402,14 +405,14 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
 
-  ankh-css@1.2.2:
-    resolution: {integrity: sha512-9sqhNrkjCeOshlOjgJyCpqq28rHHMZNUsgRF9RShOH/FNuuoyu13SMYMHBP2I8wMymBO90fvFeoBJeY6/KUt2Q==}
+  ankh-css@1.3.0:
+    resolution: {integrity: sha512-t+CVUwaC7M0vR0qiVcYM4sDV6dDYFrD9RBWjMAM0WBwdSFUCyhbbG5e/+Cpdmfm2SvnnhWTiuDSJOfcGyGUgXQ==}
 
   ankh-hook@1.0.10:
     resolution: {integrity: sha512-bsnSZOZEolWFNORWoupY1p+VuUcSjDMcdvvRZRe1uvhWmYhJvvaw+7NDworBuJS1/GJwZ6jQgrMCVwdp9DXCJA==}
 
-  ankh-ui@1.0.12:
-    resolution: {integrity: sha512-Qeh4CNKOkQHcKb3V25Q9zbgox9kPBRAxB/NWjT3YUoRJh+Wv2ImI11xSvDN95Qx1nz8oYs4HCy4aBv4XipZ4QQ==}
+  ankh-ui@1.0.23:
+    resolution: {integrity: sha512-DXtD8vpSpBPfoymY+rmP0/+dd53qdNy08odic1vmDHId5R6iIfym6pJsea5B07ks9CUZiJWNp2DE04yiABl1Gw==}
     engines: {bun: please-use-pnpm, lint: tsc, node: ^20.15.0, npm: please-use-pnpm, pnpm: ^9.4.0, yarn: please-use-pnpm}
 
   ansi-regex@5.0.1:
@@ -1594,7 +1597,7 @@ snapshots:
       screenfull: 5.2.0
       tslib: 2.6.3
 
-  ankh-css@1.2.2(postcss@8.4.31):
+  ankh-css@1.3.0(postcss@8.4.31):
     dependencies:
       cssnano: 7.0.4(postcss@8.4.31)
     transitivePeerDependencies:
@@ -1609,7 +1612,7 @@ snapshots:
       - react
       - react-dom
 
-  ankh-ui@1.0.12:
+  ankh-ui@1.0.23:
     dependencies:
       ankh-hook: 1.0.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       next: 14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)

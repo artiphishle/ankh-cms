@@ -1,12 +1,37 @@
 {
+  "public": [
+    {"name": "images", "files": ["./logo.png"]}
+  ],
   "pages": [
     {
       "name": "home",
-      "components": [
+      "uis": [
+        {"ui": "Image", "p": {"alt": "Logo", "src": "/images/logo.png", "width": 625, "height": 125 }}
+      ]
+    },
+    {
+      "name": "news",
+      "uis": [
         { "ui": "Grid", "p":{}, "uis": [
-          {"ui": "Html", "p": {"tagName": "header", "text": "header"}},
-          {"ui": "Html", "p": {"tagName": "main", "text": "main"}},
-          {"ui": "Html", "p": {"tagName": "footer", "text": "footer"}}
+          {"ui": "Html", "p": {"text": "First"}},
+          {"ui": "Html", "p": {"text": "Second"}},
+          {"ui": "Html", "p": {"text": "Third"}}
+        ]}
+      ]
+    },
+    {
+      "name": "about",
+      "uis": [
+        {"ui": "Html", "p": {}, "uis": [
+          {"ui": "Heading", "p": {"level": "h1", "text": "About"}}
+        ]},
+        {"ui": "Grid", "p": {}, "uis": [
+          {"ui": "Html", "p": {"text": "1"}},
+          {"ui": "Html", "p": {"text": "2"}},
+          {"ui": "Html", "p": {"text": "3"}},
+          {"ui": "Html", "p": {"text": "4"}},
+          {"ui": "Html", "p": {"text": "5"}},
+          {"ui": "Html", "p": {"text": "6"}}
         ]}
       ]
     }

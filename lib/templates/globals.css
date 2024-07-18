@@ -1,4 +1,6 @@
-/* Default styles */
+html {
+  font-size: 100%;
+}
 html,
 body {
   margin: 0;
