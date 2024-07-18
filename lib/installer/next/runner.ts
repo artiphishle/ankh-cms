@@ -71,9 +71,16 @@ config.public?.forEach(({name, files})=> {
 });
 
 // Write CSS to globals.css
-const css = readFileSync(resolve(tplDir, "globals.css"), "utf8");
-writeFileSync(resolve(distDir, "src/app/globals.css"), `${css}\n\n${config.styles ? convertArrayToCss(config.styles):""}`)
+async function addStyles() {
+  if(!config.styles) return;
+
+  const style = await convertArrayToCss(config.styles)
+  const css = readFileSync(resolve(tplDir, "globals.css"), "utf8");
+  writeFileSync(resolve(distDir, "src/app/globals.css"), `${css}\n\n${style}`)
 // cpSync(resolve(tplDir, "globals.css"), resolve(distDir, "src/app/globals.css"));
+}
+addStyles();
+
 console.log("✅ Applied app config");
 
 // Install UI: 'ankh-ui'
@@ -93,6 +100,6 @@ config.pages?.forEach((page: IAnkhPage) => {
 console.log(`✅ Generated ${config.pages.length} pages`);
 
 // Run Prettier code formatter, install app and run it.
-execSync(`cd ${distDir} && prettier --write . && pnpm install`, {stdio: "inherit"});
+execSync(`cd ${distDir} && prettier --write . && pnpm install --no-frozen-lockfile`, {stdio: "inherit"});
 
 console.log("\n\nREADY! Run: 'cd next && pnpm run dev'");

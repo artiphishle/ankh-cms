@@ -15,8 +15,8 @@ importers:
         specifier: ^1.0.10
         version: 1.0.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       ankh-ui:
-        specifier: ^1.0.23
-        version: 1.0.23
+        specifier: ^1.0.25
+        version: 1.0.25
       cssnano:
         specifier: ^7.0.4
         version: 7.0.4(postcss@8.4.31)
@@ -411,8 +411,8 @@ packages:
   ankh-hook@1.0.10:
     resolution: {integrity: sha512-bsnSZOZEolWFNORWoupY1p+VuUcSjDMcdvvRZRe1uvhWmYhJvvaw+7NDworBuJS1/GJwZ6jQgrMCVwdp9DXCJA==}
 
-  ankh-ui@1.0.23:
-    resolution: {integrity: sha512-DXtD8vpSpBPfoymY+rmP0/+dd53qdNy08odic1vmDHId5R6iIfym6pJsea5B07ks9CUZiJWNp2DE04yiABl1Gw==}
+  ankh-ui@1.0.25:
+    resolution: {integrity: sha512-279fwc0QrIeB2N2WTt+dBx+xpaBlBLaxIQ6VmNx8iyoKv/kd0slKyAO/1t49DY7DqZLsWGx/CeaBpqb4elFbgA==}
     engines: {bun: please-use-pnpm, lint: tsc, node: ^20.15.0, npm: please-use-pnpm, pnpm: ^9.4.0, yarn: please-use-pnpm}
 
   ansi-regex@5.0.1:
@@ -1612,7 +1612,7 @@ snapshots:
       - react
       - react-dom
 
-  ankh-ui@1.0.23:
+  ankh-ui@1.0.25:
     dependencies:
       ankh-hook: 1.0.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       next: 14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)

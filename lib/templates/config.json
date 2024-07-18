@@ -1,4 +1,23 @@
 {
+  "styles": [
+    ["html", "font-size", "100%"],
+    ["body", "background-color", "#fff"],
+    ["body", "text-align", "center"],
+    ["body", "color", "#323235"],
+    ["h1", "font-size", "2.4rem"],
+    ["h1", "font-weight", "700"],
+    ["img", "text-align", "center"],
+    ["img", "margin-top", "40vh"],
+    ["[data-page='home']", "background-color","white"],
+    ["[data-ui='grid']", "gap", "4"],
+    ["[data-ui='grid-cell']", "margin", "2rem"],
+    ["[data-ui='grid-cell']", "background-color", "azure"],
+    ["[data-ui='accordion']", "background-color", "#cdcdd1"],
+    ["[data-ui='accordion']", "padding", "2rem"],
+    ["[data-ui='accordion-summary']", "text-transform", "uppercase"],
+    ["[data-ui='accordion-details']", "letter-space", ".8rem"]
+
+  ],
   "public": [
     {"name": "images", "files": ["./logo.png"]}
   ],
