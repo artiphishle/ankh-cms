@@ -12,8 +12,8 @@ importers:
         specifier: ^1.2.2
         version: 1.2.2(postcss@8.4.31)
       ankh-hook:
-        specifier: ^1.0.8
-        version: 1.0.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^1.0.10
+        version: 1.0.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       ankh-ui:
         specifier: ^1.0.9
         version: 1.0.9
@@ -140,8 +140,8 @@ packages:
   ankh-css@1.2.2:
     resolution: {integrity: sha512-9sqhNrkjCeOshlOjgJyCpqq28rHHMZNUsgRF9RShOH/FNuuoyu13SMYMHBP2I8wMymBO90fvFeoBJeY6/KUt2Q==}
 
-  ankh-hook@1.0.8:
-    resolution: {integrity: sha512-MO7UpJGo2JkbJ2cGGnsY75x9lulQfjxXER1qzyImCLaJqc+WQAqW655yXaaUxs+VM4AgoZDHZf3TqOSrE7YU8g==}
+  ankh-hook@1.0.10:
+    resolution: {integrity: sha512-bsnSZOZEolWFNORWoupY1p+VuUcSjDMcdvvRZRe1uvhWmYhJvvaw+7NDworBuJS1/GJwZ6jQgrMCVwdp9DXCJA==}
 
   ankh-ui@1.0.9:
     resolution: {integrity: sha512-1oMr6QeiGQQzk6B7+SIaag0MUxGL1mYW7lLycGBgYYPwWlhPcIdX3N/MorZcd3MmNp0Epyx85zo1aFX1M6Nptg==}
@@ -541,12 +541,6 @@ packages:
   react-hook@0.0.1:
     resolution: {integrity: sha512-2/Guf88/dGyFgUT7QDtBJ1l7V5yqTcAHlNRIZNTu2xg0KkDjaiYZp79ah49NDaLMI/J7voWcKLU8wMONG4A/1g==}
 
-  react-hotkeys-hook@4.5.0:
-    resolution: {integrity: sha512-Samb85GSgAWFQNvVt3PS90LPPGSf9mkH/r4au81ZP1yOIFayLC3QAvqTgGtJ8YEDMXtPmaVBs6NgipHO6h4Mug==}
-    peerDependencies:
-      react: '>=16.8.1'
-      react-dom: '>=16.8.1'
-
   react-universal-interface@0.6.2:
     resolution: {integrity: sha512-dg8yXdcQmvgR13RIlZbTRQOoUrDciFVoSBZILwjE2LFISxZZ8loVJKAkuzswl5js8BHda79bIb2b84ehU8IjXw==}
     peerDependencies:
@@ -764,10 +758,9 @@ snapshots:
     transitivePeerDependencies:
       - postcss
 
-  ankh-hook@1.0.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  ankh-hook@1.0.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       ahooks: 3.8.0(react@18.3.1)
-      react-hotkeys-hook: 4.5.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-use: 17.5.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-useportal: 1.0.19(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
     transitivePeerDependencies:
@@ -776,7 +769,7 @@ snapshots:
 
   ankh-ui@1.0.9:
     dependencies:
-      ankh-hook: 1.0.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      ankh-hook: 1.0.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       next: 14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
@@ -1192,11 +1185,6 @@ snapshots:
   react-fast-compare@3.2.2: {}
 
   react-hook@0.0.1: {}
-
-  react-hotkeys-hook@4.5.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
-    dependencies:
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
 
   react-universal-interface@0.6.2(react@18.3.1)(tslib@2.6.3):
     dependencies:

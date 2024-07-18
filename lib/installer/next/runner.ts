@@ -52,7 +52,7 @@ console.log("6. Patch root layout");
 cpSync(resolve(libDir, "installer/next/templates/layout.tsx"), resolve(distDir, "src/app/layout.tsx"));
 
 console.log("7. Installing 'ankh-ui'");
-execSync(`cd ${distDir} && npm i ankh-ui@latest`);
+execSync(`cd ${distDir} && pnpm i ankh-ui@latest`);
 
 console.log("8. Generate pages");
 const demoPage = `
@@ -72,4 +72,4 @@ console.log("9. Prettier formatting");
 execSync(`prettier --write ${distDir}`);
 
 console.log("\n\nSuccess!\n\n");
-console.log("Run:", "cd next && npm run dev");
+console.log("Run:", "cd next && pnpm run dev");
