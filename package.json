@@ -1,21 +1,17 @@
 {
   "name": "ankh-cms",
-  "version": "1.1.16",
+  "version": "1.1.32",
   "bin": {
-    "ankh-cms": "index.js"
+    "ankh-cms": "dist/index.js"
   },
   "description": "Ankhorage CMS",
-  "files": [
-    "lib",
-    "dist",
-    "index.js"
-  ],
-  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "main": "index.js",
   "scripts": {
-    "build": "tsc",
-    "prepublish": "tsc"
+    "lint": "tsc",
+    "build": "tsup lib/**/*.ts --format cjs,esm --dts",
+    "prepublish": "pnpm run build"
   },
   "repository": {
     "type": "git",
@@ -35,7 +31,7 @@
   "dependencies": {
     "ankh-css": "^1.2.2",
     "ankh-hook": "^1.0.10",
-    "ankh-ui": "^1.0.9",
+    "ankh-ui": "^1.0.12",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
@@ -43,6 +39,7 @@
     "@types/node": "^20.14.11",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "tsup": "^8.1.2",
     "typescript": "^5.5.3"
   }
 }

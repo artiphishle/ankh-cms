@@ -1,0 +1,14 @@
+{
+  "pages": [
+    {
+      "name": "home",
+      "components": [
+        { "ui": "Grid", "p":{}, "uis": [
+          {"ui": "Html", "p": {"tagName": "header", "text": "header"}},
+          {"ui": "Html", "p": {"tagName": "main", "text": "main"}},
+          {"ui": "Html", "p": {"tagName": "footer", "text": "footer"}}
+        ]}
+      ]
+    }
+  ]
+}
