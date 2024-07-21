@@ -8,7 +8,7 @@
     ["h1", "font-weight", "700"],
     ["img", "text-align", "center"],
     ["img", "margin-top", "40vh"],
-    ["[data-page='home']", "background-color","white"],
+    ["[data-page='home']", "background-color", "white"],
     ["[data-ui='grid']", "gap", "4"],
     ["[data-ui='grid-cell']", "margin", "2rem"],
     ["[data-ui='grid-cell']", "background-color", "azure"],
@@ -16,42 +16,57 @@
     ["[data-ui='accordion']", "padding", "2rem"],
     ["[data-ui='accordion-summary']", "text-transform", "uppercase"],
     ["[data-ui='accordion-details']", "letter-space", ".8rem"]
-
   ],
-  "public": [
-    {"name": "images", "files": ["./logo.png"]}
-  ],
+  "public": [{ "name": "images", "files": ["./logo.png"] }],
   "pages": [
     {
       "name": "home",
       "uis": [
-        {"ui": "Image", "p": {"alt": "Logo", "src": "/images/logo.png", "width": 625, "height": 125 }}
+        {
+          "ui": "Image",
+          "p": {
+            "alt": "Logo",
+            "src": "/images/logo.png",
+            "width": 625,
+            "height": 125
+          }
+        }
       ]
     },
     {
       "name": "news",
       "uis": [
-        { "ui": "Grid", "p":{}, "uis": [
-          {"ui": "Html", "p": {"text": "First"}},
-          {"ui": "Html", "p": {"text": "Second"}},
-          {"ui": "Html", "p": {"text": "Third"}}
-        ]}
+        {
+          "ui": "Grid",
+          "p": {},
+          "uis": [
+            { "ui": "Html", "p": { "text": "First" } },
+            { "ui": "Html", "p": { "text": "Second" } },
+            { "ui": "Html", "p": { "text": "Third" } }
+          ]
+        }
       ]
     },
     {
       "name": "about",
       "uis": [
-        {"ui": "Html", "p": {}, "uis": [
-          {"ui": "Heading", "p": {"level": "h1", "text": "About"}}
-        ]},
-        {"ui": "Grid", "p": {}, "uis": [
-          {"ui": "Html", "p": {"text": "1"}},
-          {"ui": "Html", "p": {"text": "2"}},
-          {"ui": "Html", "p": {"text": "3"}},
-          {"ui": "Html", "p": {"text": "4"}},
-          {"ui": "Html", "p": {"text": "5"}},
-          {"ui": "Html", "p": {"text": "6"}}
-        ]}
+        {
+          "ui": "Html",
+          "p": {},
+          "uis": [{ "ui": "Heading", "p": { "level": "h1", "text": "About" } }]
+        },
+        {
+          "ui": "Grid",
+          "p": {},
+          "uis": [
+            { "ui": "Html", "p": { "text": "1" } },
+            { "ui": "Html", "p": { "text": "2" } },
+            { "ui": "Html", "p": { "text": "3" } },
+            { "ui": "Html", "p": { "text": "4" } },
+            { "ui": "Html", "p": { "text": "5" } },
+            { "ui": "Html", "p": { "text": "6" } }
+          ]
+        }
       ]
     }
   ]

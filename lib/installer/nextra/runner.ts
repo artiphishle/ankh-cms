@@ -2,11 +2,11 @@
  * https://nextra.site/docs/custom-theme
  */
 
-import { execSync } from "child_process";
+import { execSync } from 'child_process';
 
 // Install Nextra
 // @todo dynamic theme from config
-execSync("pnpm i nextra nextra-theme-blog");
+execSync('pnpm i nextra nextra-theme-blog');
 
 // @todo Replace Next.js Config
 // ./next.config.mjs

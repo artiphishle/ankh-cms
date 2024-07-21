@@ -1,9 +1,26 @@
+@import './meyer.reset.css';
+
 html {
   font-size: 100%;
 }
+
 html,
 body {
   margin: 0;
   padding: 0;
   height: 100%;
+}
+
+/** @theme light */
+[data-theme='light'],
+[data-theme='light'] body {
+  background-color: #fff;
+  color: #000;
+}
+
+/** @theme dark */
+[data-theme='dark'],
+[data-theme='dark'] body {
+  background-color: #000;
+  color: #fff;
 }

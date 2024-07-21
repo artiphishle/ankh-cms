@@ -18,15 +18,20 @@ interface IComponent {
 }
 
 const components: IComponent[] = [
-  { c: "Heading", t: "t1", p: { text: "Title", h: 1 } },
-  { c: "Card1", t: "t2", p: {}, cSubs: [] },
-  { c: "Button", t: "t3", p: {} }
+  { c: 'Heading', t: 't1', p: { text: 'Title', h: 1 } },
+  { c: 'Card1', t: 't2', p: {}, cSubs: [] },
+  { c: 'Button', t: 't3', p: {} },
 ];
 
-const generateComponent = ({c, t, cSubs}: IComponent, indent: string = '  '): string => {
+const generateComponent = (
+  { c, t, cSubs }: IComponent,
+  indent: string = '  '
+): string => {
   let children = '';
   if (cSubs && cSubs.length > 0) {
-    children = cSubs.map(sub => generateComponent(sub, indent + '  ')).join('\n');
+    children = cSubs
+      .map((sub) => generateComponent(sub, indent + '  '))
+      .join('\n');
   }
 
   return `
@@ -37,7 +42,7 @@ const generateComponent = ({c, t, cSubs}: IComponent, indent: string = '  '): st
 };
 
 const generateComponentsFile = (components: IComponent[], filePath: string) => {
-  const content = components.map(comp => generateComponent(comp)).join('\n');
+  const content = components.map((comp) => generateComponent(comp)).join('\n');
   const formattedContent = `
     import React from 'react';
     
@@ -46,15 +51,18 @@ const generateComponentsFile = (components: IComponent[], filePath: string) => {
     );
 
     export default Components;`;
-    
+
   fs.writeFileSync(filePath, formattedContent);
 };
 
-const outputDir = "./components";
+const outputDir = './components';
 if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir, { recursive: true });
 }
 
-generateComponentsFile(components, path.join(outputDir, 'GeneratedComponents.tsx'));
+generateComponentsFile(
+  components,
+  path.join(outputDir, 'GeneratedComponents.tsx')
+);
 
 console.log('Components generated successfully.');

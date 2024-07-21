@@ -3,7 +3,7 @@
     {
       "name": "home",
       "components": [
-        { "c": "Html", "p": {"tagName": "main", "text": "Demo content"}}
+        { "c": "Html", "p": { "tagName": "main", "text": "Demo content" } }
       ]
     }
   ]
