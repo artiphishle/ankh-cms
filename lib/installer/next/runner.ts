@@ -49,9 +49,13 @@ function getRecursiveImports({ ui, uis }: IAnkhUi, result: string[]) {
 function generatePage({ name, uis }: IAnkhPage) {
   /** @todo Only one at root level ATM */
   const imports = uis.map((ui) => getRecursiveImports(ui, [])).flatMap((uiArray) => uiArray);
+  let uniqueImports: string[] = [];
+  imports.forEach((imp) => {
+    if (!uniqueImports.includes(imp)) uniqueImports.push(imp)
+  });
 
-  const imp = imports.length
-    ? `import {${imports.join(',')}} from "ankh-ui";`
+  const imp = uniqueImports.length
+    ? `import {${uniqueImports.join(',')}} from "ankh-ui";`
     : '';
 
   const ret = `return (<>${uis.map((ui) => recursiveGenUi(ui)).join("\n")}</>);`;
@@ -143,13 +147,16 @@ function finishSetup() {
   console.log("\nREADY! Run: 'cd next && pnpm run dev'\n");
 }
 
-(async function (config: IAnkhCmsConfig) {
-  printTitle();
-  installNextJs();
-  installStaticFiles(config);
-  await installStyles(config);
-  installAdditionalPackages();
-  installPages(config);
-  finishSetup();
-  process.exit(0);
+(function (config: IAnkhCmsConfig) {
+  return new Promise((resolve) => {
+    printTitle();
+    installNextJs();
+    installStaticFiles(config);
+    installStyles(config).then(() => {
+      installAdditionalPackages();
+      installPages(config);
+      finishSetup();
+      resolve('ok');
+    });
+  })
 })(getConfig());
