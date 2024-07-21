@@ -151,4 +151,5 @@ function finishSetup() {
   installAdditionalPackages();
   installPages(config);
   finishSetup();
+  process.exit(0);
 })(getConfig());
