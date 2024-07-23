@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "ankh-css": "^1.3.0",
-    "ankh-ui": "^1.3.0",
+    "ankh-ui": "^1.4.4",
     "cssnano": "^7.0.4",
     "next-themes": "^0.3.0",
     "react": "^18.3.1",
@@ -18,8 +18,8 @@
     "@types/node": "^20.14.11",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "tsup": "^8.2.1",
-    "typescript": "^5.5.3"
+    "tsup": "^8.2.2",
+    "typescript": "^5.5.4"
   },
   "description": "Ankhorage CMS",
   "homepage": "https://github.com/artiphishle/ankh-cms#readme",
@@ -42,5 +42,5 @@
     "prepublish": "pnpm run build"
   },
   "types": "dist/index.d.ts",
-  "version": "1.4.4"
+  "version": "1.5.0"
 }

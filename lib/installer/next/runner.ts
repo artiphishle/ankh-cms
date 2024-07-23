@@ -128,7 +128,26 @@ function installAdditionalPackages() {
 function installPages(config: IAnkhCmsConfig) {
   mkdirSync(pagesDir);
 
-  config.pages?.forEach((page: IAnkhPage) => {
+  // Add CMS based pages
+  const cmsPages: IAnkhCmsConfig["pages"] = [{
+    uis: [
+      { ui: "Heading", p: { level: "h1", text: "Ankh_Theming" } },
+      { ui: "Heading", p: { level: "h2", text: "Colors" } },
+      { ui: "Heading", p: { level: "h3", text: "Primary" } },
+      { ui: "ColorHue", p: { color: "#ff0000" } },
+      { ui: "Heading", p: { level: "h3", text: "Complementary" } },
+      { ui: "ColorHue", p: { color: "#00ff00" } },
+      { ui: "Heading", p: { level: "h3", text: "Accent" } },
+      { ui: "ColorHue", p: { color: "#0000ff" } },
+      { ui: "Heading", p: { level: "h3", text: "Base" } },
+      { ui: "ColorHue", p: { color: "#aaaaaa" } },
+    ],
+    name: "ankh-theming"
+  }];
+  const allPages = [...cmsPages, ...config.pages || []];
+
+  /** @todo Custom pages cannot start with 'ankh' */
+  allPages.forEach((page: IAnkhPage) => {
     mkdirSync(resolve(pagesDir, page.name));
     writeFileSync(
       resolve(pagesDir, page.name, 'page.tsx'),
@@ -136,7 +155,7 @@ function installPages(config: IAnkhCmsConfig) {
       { encoding: 'utf8' }
     );
   });
-  console.log(`✅ Generated ${config.pages.length} pages`);
+  console.log(`✅ Generated ${config.pages.length - cmsPages.length} pages (plus ${cmsPages.length} cms pages)`);
 }
 function finishSetup() {
   execSync(
