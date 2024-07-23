@@ -9,7 +9,12 @@ import {
   rmSync,
   writeFileSync,
 } from 'fs';
-import { IAnkhCmsConfig, IAnkhPage, IAnkhUi, TAnkhUiProps } from '../../types';
+import {
+  IAnkhCmsConfig,
+  IAnkhCmsPage,
+  IAnkhUi,
+  TAnkhUiProps,
+} from 'ankh-types';
 import { convertArrayToCss } from 'ankh-css';
 
 const cmsDir = process.argv[2]!;
@@ -19,19 +24,26 @@ const tplDir = resolve(libDir, 'templates/');
 const distDir = resolve(outDir, 'next/');
 const publicDir = resolve(distDir, 'public/');
 const pagesDir = resolve(distDir, 'src/app/(pages)/');
-const configFile = resolve(outDir, 'config.json');
+// const configFile = resolve(outDir, 'config.json');
 
+async function importConfig() {
+  const { config } = await import(resolve(libDir, 'config.ts'));
+  console.log(`✅ Dynamically imported config file`);
+  return config;
+}
 function printTitle() {
   console.log();
   console.log('Ankhorage CMS');
   console.log('=============\n');
 }
 function stringifyProps(props: TAnkhUiProps) {
-  return Object.keys(props).map((key: string) => {
-    const propValue = props[key];
-    if (typeof propValue === "string") return `${key}="${propValue}"`
-    return `${key}={${JSON.stringify(propValue)}}`;
-  }).join(" ");
+  return Object.keys(props)
+    .map((key: string) => {
+      const propValue = props[key];
+      if (typeof propValue === 'string') return `${key}="${propValue}"`;
+      return `${key}={${JSON.stringify(propValue)}}`;
+    })
+    .join(' ');
 }
 function recursiveGenUi(ui: IAnkhUi) {
   let subUis = '';
@@ -46,28 +58,31 @@ function getRecursiveImports({ ui, uis }: IAnkhUi, result: string[]) {
 
   return result;
 }
-function generatePage({ name, uis }: IAnkhPage) {
-  /** @todo Only one at root level ATM */
-  const imports = uis.map((ui) => getRecursiveImports(ui, [])).flatMap((uiArray) => uiArray);
+function generatePage({ name, uis }: IAnkhCmsPage) {
+  const imports = uis
+    .map((ui) => getRecursiveImports(ui, []))
+    .flatMap((uiArray) => uiArray);
   let uniqueImports: string[] = [];
   imports.forEach((imp) => {
-    if (!uniqueImports.includes(imp)) uniqueImports.push(imp)
+    if (!uniqueImports.includes(imp)) uniqueImports.push(imp);
   });
 
   const imp = uniqueImports.length
     ? `import {${uniqueImports.join(',')}} from "ankh-ui";`
     : '';
 
-  const ret = `return (<>${uis.map((ui) => recursiveGenUi(ui)).join("\n")}</>);`;
+  const ret = `return (<>${uis.map((ui) => recursiveGenUi(ui)).join('\n')}</>);`;
 
   return `${imp}\n\n/** Page: /${name} */\nexport default function Page(){\n${ret}}`;
 }
+/*
 function getConfig() {
   if (!existsSync(configFile))
     copyFileSync(resolve(tplDir, 'config.json'), configFile);
 
   return JSON.parse(readFileSync(configFile, 'utf8'));
 }
+*/
 function installNextJs() {
   // Clear app directory if exists
   if (existsSync(distDir)) rmSync(distDir, { recursive: true, force: true });
@@ -93,6 +108,14 @@ function installNextJs() {
   cpSync(resolve(tplDir, 'layout.tsx'), resolve(distDir, 'src/app/layout.tsx'));
 
   console.log('✅ Next.js app installed & configured');
+}
+function installServerActions() {
+  mkdirSync(resolve(distDir, '_server'));
+  cpSync(
+    resolve(tplDir, 'fetchConfig.ts'),
+    resolve(distDir, '_server/fetchConfig.ts')
+  );
+  console.log('✅ Installed Server Actions');
 }
 function installStaticFiles(config: IAnkhCmsConfig) {
   config.public?.forEach(({ name, files }) => {
@@ -122,6 +145,7 @@ function installAdditionalPackages() {
   const pkgJson = JSON.parse(readFileSync(pkgJsonFilename, 'utf8'));
   pkgJson.dependencies['ankh-ui'] = 'latest';
   pkgJson.dependencies['next-themes'] = 'latest';
+  pkgJson.dependencies['server-only'] = 'latest';
 
   writeFileSync(pkgJsonFilename, JSON.stringify(pkgJson, null, 2));
 }
@@ -129,7 +153,7 @@ function installPages(config: IAnkhCmsConfig) {
   mkdirSync(pagesDir);
 
   /** @todo Custom pages cannot start with 'ankh' */
-  config.pages?.forEach((page: IAnkhPage) => {
+  config.pages?.forEach((page: IAnkhCmsPage) => {
     mkdirSync(resolve(pagesDir, page.name));
     writeFileSync(
       resolve(pagesDir, page.name, 'page.tsx'),
@@ -143,21 +167,22 @@ function finishSetup() {
   execSync(
     `cd ${distDir} && prettier --write . && pnpm install --no-frozen-lockfile`
   );
-  console.log('✅ Additional packages installed: ankh-ui, next-themes');
+  console.log(
+    '✅ Additional packages installed: ankh-ui, next-themes, server-only'
+  );
   console.log('✅ Code files formatted');
   console.log("\nREADY! Run: 'cd next && pnpm run dev'\n");
 }
 
-(function (config: IAnkhCmsConfig) {
-  return new Promise((resolve) => {
-    printTitle();
-    installNextJs();
-    installStaticFiles(config);
-    installStyles(config).then(() => {
-      installAdditionalPackages();
-      installPages(config);
-      finishSetup();
-      resolve('ok');
-    });
-  })
-})(getConfig());
+(async function () {
+  const config = await importConfig();
+
+  printTitle();
+  installNextJs();
+  installServerActions();
+  installStaticFiles(config);
+  await installStyles(config);
+  installAdditionalPackages();
+  installPages(config);
+  finishSetup();
+})();

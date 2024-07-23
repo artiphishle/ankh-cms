@@ -12,12 +12,15 @@
     "cssnano": "^7.0.4",
     "next-themes": "^0.3.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-use": "^17.5.1"
   },
   "devDependencies": {
-    "@types/node": "^20.14.11",
+    "@types/node": "^20.14.12",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "ankh-types": "^1.0.2",
+    "server-only": "^0.0.1",
     "tsup": "^8.2.2",
     "typescript": "^5.5.4"
   },
@@ -39,8 +42,9 @@
   "scripts": {
     "build": "tsup lib/**/*.ts --format cjs,esm --dts",
     "lint": "tsc",
-    "prepublish": "pnpm run build"
+    "prepublish": "pnpm run build",
+    "prettier:write": "prettier --config .prettierrc.mjs --write ."
   },
   "types": "dist/index.d.ts",
-  "version": "1.5.1"
+  "version": "1.5.3"
 }
