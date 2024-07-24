@@ -25,8 +25,6 @@ const header = { ui: 'Html', p: { tagName: 'header' }, uis: [{ ...nav }] };
 
 const styles: TStyle[] = [
   [':root', '--primary-color', 'lab(20 -10 -50)'],
-  [':root', '--secondary-color', 'lab(50 -30 -80)'],
-  [':root', '--base-color', 'lab(90 -120 40)'],
   [
     '.primary-900',
     'background-color',
@@ -67,92 +65,6 @@ const styles: TStyle[] = [
     '.primary-100',
     'background-color',
     'lab(from var(--primary-color) calc(l - 60) a b)',
-  ],
-  [
-    '.secondary-900',
-    'background-color',
-    'lab(from var(--secondary-color) calc(l + 60) a b)',
-  ],
-  [
-    '.secondary-800',
-    'background-color',
-    'lab(from var(--secondary-color) calc(l + 45) a b)',
-  ],
-  [
-    '.secondary-700',
-    'background-color',
-    'lab(from var(--secondary-color) calc(l + 30) a b)',
-  ],
-  [
-    '.secondary-600',
-    'background-color',
-    'lab(from var(--secondary-color) calc(l + 15) a b)',
-  ],
-  ['.secondary-500', 'background-color', 'var(--secondary-color)'],
-  [
-    '.secondary-400',
-    'background-color',
-    'lab(from var(--secondary-color) calc(l - 15) a b)',
-  ],
-  [
-    '.secondary-300',
-    'background-color',
-    'lab(from var(--secondary-color) calc(l - 30) a b)',
-  ],
-  [
-    '.secondary-200',
-    'background-color',
-    'lab(from var(--secondary-color) calc(l - 45) a b)',
-  ],
-  [
-    '.secondary-100',
-    'background-color',
-    'lab(from var(--secondary-color) calc(l - 60) a b)',
-  ],
-  [
-    '.base-900',
-    'background-color',
-    'lab(from var(--base-color) calc(l + 60) a b)',
-  ],
-  [
-    '.base-800',
-    'background-color',
-    'lab(from var(--base-color) calc(l + 45) a b)',
-  ],
-  [
-    '.base-700',
-    'background-color',
-    'lab(from var(--base-color) calc(l + 30) a b)',
-  ],
-  [
-    '.base-600',
-    'background-color',
-    'lab(from var(--base-color) calc(l + 15) a b)',
-  ],
-  [
-    '.base-500',
-    'background-color',
-    'lab(from var(--base-color)',
-  ],
-  [
-    '.base-400',
-    'background-color',
-    'lab(from var(--base-color) calc(l - 15) a b)',
-  ],
-  [
-    '.base-300',
-    'background-color',
-    'lab(from var(--base-color) calc(l - 30) a b)',
-  ],
-  [
-    '.base-200',
-    'background-color',
-    'lab(from var(--base-color) calc(l - 45) a b)',
-  ],
-  [
-    '.base-100',
-    'background-color',
-    'lab(from var(--base-color) calc(l - 60) a b)',
   ],
   ['html', 'font-family', 'Arial'],
   ['html', 'font-size', '100%'],
