@@ -1,5 +1,5 @@
-'use server';
-import 'server-only';
+// 'use server';
+// import 'server-only';
 import { IAnkhCmsConfig, TStyle } from 'ankh-types';
 
 const nav = {
@@ -24,45 +24,133 @@ const nav = {
 const header = { ui: 'Html', p: { tagName: 'header' }, uis: [{ ...nav }] };
 
 const styles: TStyle[] = [
-  [':root', '--base-color', 'lab(20 -10 -50)'],
+  [':root', '--primary-color', 'lab(20 -10 -50)'],
+  [':root', '--secondary-color', 'lab(50 -30 -80)'],
+  [':root', '--base-color', 'lab(90 -120 40)'],
   [
     '.primary-900',
     'background-color',
-    'lab(from var(--base-color) calc(l + 60) a b)',
+    'lab(from var(--primary-color) calc(l + 60) a b)',
   ],
   [
     '.primary-800',
     'background-color',
-    'lab(from var(--base-color) calc(l + 45) a b)',
+    'lab(from var(--primary-color) calc(l + 45) a b)',
   ],
   [
     '.primary-700',
     'background-color',
-    'lab(from var(--base-color) calc(l + 30) a b)',
+    'lab(from var(--primary-color) calc(l + 30) a b)',
   ],
   [
     '.primary-600',
     'background-color',
-    'lab(from var(--base-color) calc(l + 15) a b)',
+    'lab(from var(--primary-color) calc(l + 15) a b)',
   ],
-  ['.primary-500', 'background-color', 'var(--base-color)'],
+  ['.primary-500', 'background-color', 'var(--primary-color)'],
   [
     '.primary-400',
     'background-color',
-    'lab(from var(--base-color) calc(l - 15) a b)',
+    'lab(from var(--primary-color) calc(l - 15) a b)',
   ],
   [
     '.primary-300',
     'background-color',
-    'lab(from var(--base-color) calc(l - 30) a b)',
+    'lab(from var(--primary-color) calc(l - 30) a b)',
   ],
   [
     '.primary-200',
     'background-color',
-    'lab(from var(--base-color) calc(l - 45) a b)',
+    'lab(from var(--primary-color) calc(l - 45) a b)',
   ],
   [
     '.primary-100',
+    'background-color',
+    'lab(from var(--primary-color) calc(l - 60) a b)',
+  ],
+  [
+    '.secondary-900',
+    'background-color',
+    'lab(from var(--secondary-color) calc(l + 60) a b)',
+  ],
+  [
+    '.secondary-800',
+    'background-color',
+    'lab(from var(--secondary-color) calc(l + 45) a b)',
+  ],
+  [
+    '.secondary-700',
+    'background-color',
+    'lab(from var(--secondary-color) calc(l + 30) a b)',
+  ],
+  [
+    '.secondary-600',
+    'background-color',
+    'lab(from var(--secondary-color) calc(l + 15) a b)',
+  ],
+  ['.secondary-500', 'background-color', 'var(--secondary-color)'],
+  [
+    '.secondary-400',
+    'background-color',
+    'lab(from var(--secondary-color) calc(l - 15) a b)',
+  ],
+  [
+    '.secondary-300',
+    'background-color',
+    'lab(from var(--secondary-color) calc(l - 30) a b)',
+  ],
+  [
+    '.secondary-200',
+    'background-color',
+    'lab(from var(--secondary-color) calc(l - 45) a b)',
+  ],
+  [
+    '.secondary-100',
+    'background-color',
+    'lab(from var(--secondary-color) calc(l - 60) a b)',
+  ],
+  [
+    '.base-900',
+    'background-color',
+    'lab(from var(--base-color) calc(l + 60) a b)',
+  ],
+  [
+    '.base-800',
+    'background-color',
+    'lab(from var(--base-color) calc(l + 45) a b)',
+  ],
+  [
+    '.base-700',
+    'background-color',
+    'lab(from var(--base-color) calc(l + 30) a b)',
+  ],
+  [
+    '.base-600',
+    'background-color',
+    'lab(from var(--base-color) calc(l + 15) a b)',
+  ],
+  [
+    '.base-500',
+    'background-color',
+    'lab(from var(--base-color)',
+  ],
+  [
+    '.base-400',
+    'background-color',
+    'lab(from var(--base-color) calc(l - 15) a b)',
+  ],
+  [
+    '.base-300',
+    'background-color',
+    'lab(from var(--base-color) calc(l - 30) a b)',
+  ],
+  [
+    '.base-200',
+    'background-color',
+    'lab(from var(--base-color) calc(l - 45) a b)',
+  ],
+  [
+    '.base-100',
     'background-color',
     'lab(from var(--base-color) calc(l - 60) a b)',
   ],
@@ -126,13 +214,13 @@ export const config: IAnkhCmsConfig = {
             { ui: 'Heading', p: { level: 'h1', text: 'Ankh_Theming' } },
             { ui: 'Heading', p: { level: 'h2', text: 'Colors' } },
             { ui: 'Heading', p: { level: 'h3', text: 'Primary' } },
-            { ui: 'ColorHue', p: { color: '#00ff00' } },
+            { ui: 'ColorHue', p: { color: 'lab(20 -10 -50)' } },
             { ui: 'Heading', p: { level: 'h3', text: 'Complementary' } },
-            { ui: 'ColorHue', p: { color: '#0000ff' } },
+            { ui: 'ColorHue', p: { color: 'lab(20 -10 -50)' } },
             { ui: 'Heading', p: { level: 'h3', text: 'Accent' } },
-            { ui: 'ColorHue', p: { color: '#ffff00' } },
+            { ui: 'ColorHue', p: { color: 'lab(20 -10 -50)' } },
             { ui: 'Heading', p: { level: 'h3', text: 'Base' } },
-            { ui: 'ColorHue', p: { color: '#aaaaaa' } },
+            { ui: 'ColorHue', p: { color: 'lab(20 -10 -50)' } },
           ],
         },
       ],

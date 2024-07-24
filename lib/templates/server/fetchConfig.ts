@@ -1,5 +1,5 @@
-'use server';
-import 'server-only';
+"use server";
+
 import { config } from './config';
 
 export async function fetchConfig() {

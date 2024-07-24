@@ -17,17 +17,25 @@ import {
 } from 'ankh-types';
 import { convertArrayToCss } from 'ankh-css';
 
-const cmsDir = process.argv[2]!;
-const outDir = process.cwd();
-const libDir = resolve(cmsDir, '../lib/');
-const tplDir = resolve(libDir, 'templates/');
-const distDir = resolve(outDir, 'next/');
-const publicDir = resolve(distDir, 'public/');
-const pagesDir = resolve(distDir, 'src/app/(pages)/');
-// const configFile = resolve(outDir, 'config.json');
+const root = {
+  src: resolve(process.argv[2]!, "../"),
+  dist: process.cwd()
+};
+
+const dir = {
+  src: {
+    lib: resolve(root.src, "lib/"),
+    libTpl: resolve(root.src, 'lib/templates/')
+  },
+  dist: {
+    next: resolve(root.dist, 'next/'),
+    public: resolve(root.dist, 'next/public/'),
+    nextSrcAppPages: resolve(root.dist, 'next/src/app/(pages)/')
+  }
+};
 
 async function importConfig() {
-  const { config } = await import(resolve(libDir, 'config.ts'));
+  const { config } = await import("../../templates/server/config");
   console.log(`✅ Dynamically imported config file`);
   return config;
 }
@@ -75,53 +83,51 @@ function generatePage({ name, uis }: IAnkhCmsPage) {
 
   return `${imp}\n\n/** Page: /${name} */\nexport default function Page(){\n${ret}}`;
 }
-/*
-function getConfig() {
-  if (!existsSync(configFile))
-    copyFileSync(resolve(tplDir, 'config.json'), configFile);
-
-  return JSON.parse(readFileSync(configFile, 'utf8'));
-}
-*/
 function installNextJs() {
   // Clear app directory if exists
-  if (existsSync(distDir)) rmSync(distDir, { recursive: true, force: true });
-  mkdirSync(distDir);
+  if (existsSync(dir.dist.next)) {
+    rmSync(dir.dist.next, { recursive: true, force: true });
+  }
+  mkdirSync(dir.dist.next);
 
   // Next.js install
   execSync(
-    `pnpm dlx create-next-app@latest ${distDir} --ts --app --src-dir --no-eslint --no-import-alias --no-tailwind`,
+    `pnpm dlx create-next-app@latest ${dir.dist.next} --ts --app --src-dir --no-eslint --no-import-alias --no-tailwind`,
     { encoding: 'utf8' }
   );
 
   // Add redirection to /home to next.config.mjs
   cpSync(
-    resolve(tplDir, 'next.config.mjs'),
-    resolve(distDir, 'next.config.mjs')
+    resolve(dir.src.libTpl, 'next.config.mjs'),
+    resolve(dir.dist.next, 'next.config.mjs')
   );
 
   // Empty public/ directory
-  rmSync(publicDir, { recursive: true, force: true });
-  mkdirSync(publicDir);
+  rmSync(dir.dist.public, { recursive: true, force: true });
+  mkdirSync(dir.dist.public);
 
   // Add root layout
-  cpSync(resolve(tplDir, 'layout.tsx'), resolve(distDir, 'src/app/layout.tsx'));
+  cpSync(resolve(dir.src.libTpl, 'layout.tsx'), resolve(dir.dist.next, 'src/app/layout.tsx'));
 
   console.log('✅ Next.js app installed & configured');
 }
 function installServerActions() {
-  mkdirSync(resolve(distDir, '_server'));
-  cpSync(
-    resolve(tplDir, 'fetchConfig.ts'),
-    resolve(distDir, '_server/fetchConfig.ts')
+  mkdirSync(resolve(dir.dist.next, 'src/app/_server'));
+  copyFileSync(
+    resolve(dir.src.libTpl, "server/config.ts"),
+    resolve(dir.dist.next, 'src/app/_server/config.ts')
+  );
+  copyFileSync(
+    resolve(dir.src.libTpl, 'server/fetchConfig.ts'),
+    resolve(dir.dist.next, 'src/app/_server/fetchConfig.ts')
   );
   console.log('✅ Installed Server Actions');
 }
 function installStaticFiles(config: IAnkhCmsConfig) {
   config.public?.forEach(({ name, files }) => {
-    mkdirSync(resolve(publicDir, name));
+    mkdirSync(resolve(dir.dist.public, name));
     files.forEach((filename: string) =>
-      cpSync(filename, resolve(publicDir, name, basename(filename)))
+      cpSync(filename, resolve(dir.dist.public, name, basename(filename)))
     );
   });
 }
@@ -129,43 +135,43 @@ async function installStyles(config: IAnkhCmsConfig) {
   if (!config.styles) return;
 
   const style = await convertArrayToCss(config.styles);
-  const css = readFileSync(resolve(tplDir, 'globals.css'), 'utf8');
-  writeFileSync(resolve(distDir, 'src/app/globals.css'), `${css}\n\n${style}`);
+  const css = readFileSync(resolve(dir.src.libTpl, 'globals.css'), 'utf8');
+  writeFileSync(resolve(dir.dist.next, 'src/app/globals.css'), `${css}\n\n${style}`);
 
   // Copy Reset CSS
   cpSync(
-    resolve(tplDir, 'meyer.reset.css'),
-    resolve(distDir, 'src/app/meyer.reset.css')
+    resolve(dir.src.libTpl, 'meyer.reset.css'),
+    resolve(dir.dist.next, 'src/app/meyer.reset.css')
   );
-
   console.log(`✅ Applied CSS`);
 }
 function installAdditionalPackages() {
-  const pkgJsonFilename = resolve(distDir, 'package.json');
+  const pkgJsonFilename = resolve(dir.dist.next, 'package.json');
   const pkgJson = JSON.parse(readFileSync(pkgJsonFilename, 'utf8'));
   pkgJson.dependencies['ankh-ui'] = 'latest';
   pkgJson.dependencies['next-themes'] = 'latest';
   pkgJson.dependencies['server-only'] = 'latest';
+  pkgJson.devDependencies['ankh-types'] = 'latest';
 
   writeFileSync(pkgJsonFilename, JSON.stringify(pkgJson, null, 2));
 }
 function installPages(config: IAnkhCmsConfig) {
-  mkdirSync(pagesDir);
+  mkdirSync(resolve(dir.dist.nextSrcAppPages));
 
   /** @todo Custom pages cannot start with 'ankh' */
   config.pages?.forEach((page: IAnkhCmsPage) => {
-    mkdirSync(resolve(pagesDir, page.name));
+    mkdirSync(resolve(dir.dist.nextSrcAppPages, page.name));
     writeFileSync(
-      resolve(pagesDir, page.name, 'page.tsx'),
+      resolve(dir.dist.nextSrcAppPages, page.name, 'page.tsx'),
       generatePage(page),
       { encoding: 'utf8' }
     );
   });
-  console.log(`✅ Generated ${config.pages.length}`);
+  console.log(`✅ Generated ${config.pages.length} pages`);
 }
 function finishSetup() {
   execSync(
-    `cd ${distDir} && prettier --write . && pnpm install --no-frozen-lockfile`
+    `cd ${dir.dist.next} && prettier --write . && pnpm install --no-frozen-lockfile`
   );
   console.log(
     '✅ Additional packages installed: ankh-ui, next-themes, server-only'
@@ -175,9 +181,8 @@ function finishSetup() {
 }
 
 (async function () {
-  const config = await importConfig();
-
   printTitle();
+  const config = await importConfig();
   installNextJs();
   installServerActions();
   installStaticFiles(config);
