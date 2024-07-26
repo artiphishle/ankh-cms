@@ -25,47 +25,6 @@ const header = { ui: 'Html', p: { tagName: 'header' }, uis: [{ ...nav }] };
 
 const styles: TStyle[] = [
   [':root', '--primary-color', 'lab(20 -10 -50)'],
-  [
-    '.primary-900',
-    'background-color',
-    'lab(from var(--primary-color) calc(l + 60) a b)',
-  ],
-  [
-    '.primary-800',
-    'background-color',
-    'lab(from var(--primary-color) calc(l + 45) a b)',
-  ],
-  [
-    '.primary-700',
-    'background-color',
-    'lab(from var(--primary-color) calc(l + 30) a b)',
-  ],
-  [
-    '.primary-600',
-    'background-color',
-    'lab(from var(--primary-color) calc(l + 15) a b)',
-  ],
-  ['.primary-500', 'background-color', 'var(--primary-color)'],
-  [
-    '.primary-400',
-    'background-color',
-    'lab(from var(--primary-color) calc(l - 15) a b)',
-  ],
-  [
-    '.primary-300',
-    'background-color',
-    'lab(from var(--primary-color) calc(l - 30) a b)',
-  ],
-  [
-    '.primary-200',
-    'background-color',
-    'lab(from var(--primary-color) calc(l - 45) a b)',
-  ],
-  [
-    '.primary-100',
-    'background-color',
-    'lab(from var(--primary-color) calc(l - 60) a b)',
-  ],
   ['html', 'font-family', 'Arial'],
   ['html', 'font-size', '100%'],
   ['body', 'background-color', '#fff'],
