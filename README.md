@@ -1,3 +1,9 @@
 # Ankhorage CMS
 
-Content to follow.
+## Quickstart
+
+Initialization of Ankhorage CMS
+
+```bash
+pnpm dlx ankh-cms@latest
+```
