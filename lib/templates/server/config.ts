@@ -1,9 +1,9 @@
 // 'use server';
 // import 'server-only';
-import { IAnkhCmsConfig, TStyle } from 'ankh-types';
+import { EAnkhColorUnit, IAnkhCmsConfig, TStyle } from 'ankh-types';
 
 const nav = {
-  ui: 'Nav',
+  ui: 'AnkhUiNav',
   p: {
     items: [
       {
@@ -21,40 +21,25 @@ const nav = {
     ],
   },
 };
-const header = { ui: 'Html', p: { tagName: 'header' }, uis: [{ ...nav }] };
+const header = { ui: 'AnkhUiHtml', p: { tagName: 'header' }, uis: [{ ...nav }] };
 
 const styles: TStyle[] = [
-  [':root', '--primary-color', 'lab(20 -10 -50)'],
+  [':root', '--primary-color', 'hsl(219, 78%, 33%)'],
+  [':root', '--secondary-color', 'hsl(39, 22%, 67%)'],
+  [':root', '--base-color', 'hsl(0, 0%, 93%)'],
   ['html', 'font-family', 'Arial'],
   ['html', 'font-size', '100%'],
   ['body', 'background-color', '#fff'],
   ['body', 'text-align', 'center'],
   ['body', 'color', '#323235'],
-  ['main', 'padding', '1rem 2rem'],
-  ['h1', 'text-align', 'left'],
-  ['h1', 'font-size', '2.4rem'],
-  ['h1', 'font-weight', '700'],
-  ['h1', 'margin', '2rem auto 1rem'],
-  ['h2', 'text-align', 'left'],
-  ['h2', 'font-size', '1.8rem'],
-  ['h2', 'font-weight', '700'],
-  ['h2', 'margin', '2rem auto 1rem'],
-  ['h3', 'text-align', 'left'],
-  ['h3', 'font-size', '1.4rem'],
-  ['h3', 'font-weight', '700'],
-  ['h3', 'margin', '2rem auto 1rem'],
   ['img', 'text-align', 'center'],
   ['img', 'margin-top', '40vh'],
   ['body > header', 'padding', '1rem'],
   ['body > header', 'background-color', '#222'],
-  ["[data-ui='grid']", 'display', 'grid'],
-  ["[data-ui='grid']", 'gap', '2rem'],
-  ["[data-ui='grid-cell']", 'margin', '2rem'],
-  ["[data-ui='grid-cell']", 'background-color', 'azure'],
   ["[data-ui='accordion']", 'background-color', '#cdcdd1'],
   ["[data-ui='accordion']", 'padding', '2rem'],
   ["[data-ui='accordion-summary']", 'text-transform', 'uppercase'],
-  ["[data-ui='accordion-details']", 'letter-space', '.8rem'],
+  ["[data-ui='accordion-details']", 'letter-spacing', '.8rem'],
   ["[data-ui='nav']", 'display', 'flex'],
   ["[data-ui='nav'] a:link", 'text-decoration', 'none'],
   ["[data-ui='nav'] a", 'color', '#fff'],
@@ -73,25 +58,33 @@ export const config: IAnkhCmsConfig = {
       files: ['./logo.png'],
     },
   ],
+  theme: {
+    colors: {
+      primary: "hsl(219, 78%, 33%)",
+      secondary: "hsl(39, 22%, 67%)",
+      accent: "",
+      base: "hsl(0, 0%, 93%)"
+    },
+  },
   pages: [
     {
       name: 'ankh-theming',
       uis: [
         { ...header },
         {
-          ui: 'Html',
+          ui: 'AnkhUiHtml',
           p: { tagName: 'main' },
           uis: [
-            { ui: 'Heading', p: { level: 'h1', text: 'Ankh_Theming' } },
-            { ui: 'Heading', p: { level: 'h2', text: 'Colors' } },
-            { ui: 'Heading', p: { level: 'h3', text: 'Primary' } },
-            { ui: 'ColorHue', p: { color: 'lab(20 -10 -50)' } },
-            { ui: 'Heading', p: { level: 'h3', text: 'Complementary' } },
-            { ui: 'ColorHue', p: { color: 'lab(20 -10 -50)' } },
-            { ui: 'Heading', p: { level: 'h3', text: 'Accent' } },
-            { ui: 'ColorHue', p: { color: 'lab(20 -10 -50)' } },
-            { ui: 'Heading', p: { level: 'h3', text: 'Base' } },
-            { ui: 'ColorHue', p: { color: 'lab(20 -10 -50)' } },
+            { ui: 'AnkhUiHeading', p: { level: 'h1', text: 'Ankh_Theming' } },
+            { ui: 'AnkhUiHeading', p: { level: 'h2', text: 'Colors' } },
+            { ui: 'AnkhUiHeading', p: { level: 'h3', text: 'Primary' } },
+            { ui: 'AnkhUiColorHue', p: { color: 'lab(20 -10 -50)' } },
+            { ui: 'AnkhUiHeading', p: { level: 'h3', text: 'Complementary' } },
+            { ui: 'AnkhUiColorHue', p: { color: 'lab(20 -10 -50)' } },
+            { ui: 'AnkhUiHeading', p: { level: 'h3', text: 'Accent' } },
+            { ui: 'AnkhUiColorHue', p: { color: 'lab(20 -10 -50)' } },
+            { ui: 'AnkhUiHeading', p: { level: 'h3', text: 'Base' } },
+            { ui: 'AnkhUiColorHue', p: { color: 'lab(20 -10 -50)' } },
           ],
         },
       ],
@@ -101,11 +94,11 @@ export const config: IAnkhCmsConfig = {
       uis: [
         { ...header },
         {
-          ui: 'Html',
+          ui: 'AnkhUiHtml',
           p: { tagName: 'main' },
           uis: [
             {
-              ui: 'Image',
+              ui: 'AnkhUiImage',
               p: {
                 alt: 'Logo',
                 src: '/images/logo.png',
@@ -122,20 +115,30 @@ export const config: IAnkhCmsConfig = {
       uis: [
         { ...header },
         {
-          ui: 'Html',
+          ui: 'AnkhUiHtml',
           p: { tagName: 'main' },
           uis: [
             {
-              ui: 'Grid',
-              p: {},
+              ui: 'AnkhUiGrid',
+              p: { columns: 4 },
               uis: [
-                { ui: 'Html', p: { text: '1' } },
-                { ui: 'Html', p: { text: '2' } },
+                { ui: 'AnkhUiHtml', p: { text: '1' } },
+                { ui: 'AnkhUiHtml', p: { text: '2' } },
+                { ui: 'AnkhUiHtml', p: { text: '3' } },
+                { ui: 'AnkhUiHtml', p: { text: '4' } },
+                { ui: 'AnkhUiHtml', p: { text: '5' } },
+                { ui: 'AnkhUiHtml', p: { text: '6' } },
+                { ui: 'AnkhUiHtml', p: { text: '7' } },
+                { ui: 'AnkhUiHtml', p: { text: '8' } },
+                { ui: 'AnkhUiHtml', p: { text: '9' } },
+                { ui: 'AnkhUiHtml', p: { text: '10' } },
+                { ui: 'AnkhUiHtml', p: { text: '11' } },
+                { ui: 'AnkhUiHtml', p: { text: '12' } },
               ],
-            },
+            }
           ],
         },
       ],
-    },
+    }
   ],
 };

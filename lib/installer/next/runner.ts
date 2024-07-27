@@ -21,7 +21,6 @@ const root = {
   src: resolve(process.argv[2]!, "../"),
   dist: process.cwd()
 };
-
 const dir = {
   src: {
     lib: resolve(root.src, "lib/"),
@@ -76,7 +75,7 @@ function generatePage({ name, uis }: IAnkhCmsPage) {
   });
 
   const imp = uniqueImports.length
-    ? `import {${uniqueImports.join(',')}} from "ankh-ui";`
+    ? `import {${uniqueImports.join(',')}} from "@/app/_uis/index";`
     : '';
 
   const ret = `return (<>${uis.map((ui) => recursiveGenUi(ui)).join('\n')}</>);`;
@@ -105,6 +104,9 @@ function installNextJs() {
   // Empty public/ directory
   rmSync(dir.dist.public, { recursive: true, force: true });
   mkdirSync(dir.dist.public);
+
+  // Add tsconfig.json
+  cpSync(resolve(dir.src.libTpl, "tsconfig.json"), resolve(dir.dist.next, "tsconfig.json"));
 
   // Add root layout
   cpSync(resolve(dir.src.libTpl, 'layout.tsx'), resolve(dir.dist.next, 'src/app/layout.tsx'));
@@ -149,7 +151,11 @@ function installAdditionalPackages() {
   const pkgJsonFilename = resolve(dir.dist.next, 'package.json');
   const pkgJson = JSON.parse(readFileSync(pkgJsonFilename, 'utf8'));
   pkgJson.dependencies['ankh-ui'] = 'latest';
+  pkgJson.dependencies['ankh-hooks'] = 'latest';
   pkgJson.dependencies['next-themes'] = 'latest';
+  pkgJson.dependencies['lucide-react'] = 'latest';
+  pkgJson.dependencies['react-grid-gallery'] = 'latest';
+  pkgJson.dependencies['ahooks'] = 'latest';
   pkgJson.dependencies['server-only'] = 'latest';
   pkgJson.devDependencies['ankh-types'] = 'latest';
 
@@ -169,13 +175,28 @@ function installPages(config: IAnkhCmsConfig) {
   });
   console.log(`✅ Generated ${config.pages.length} pages`);
 }
-function finishSetup() {
+function installPackagesExec() {
   execSync(
     `cd ${dir.dist.next} && prettier --write . && pnpm install --no-frozen-lockfile`
   );
   console.log(
     '✅ Additional packages installed: ankh-ui, next-themes, server-only'
   );
+}
+function installUis() {
+  mkdirSync(resolve(dir.dist.next, "src/app/_uis"));
+  mkdirSync(resolve(dir.dist.next, "src/app/_auth"));
+  cpSync(resolve(dir.dist.next, "node_modules/ankh-ui/lib/uis"), resolve(dir.dist.next, "src/app/_uis"), { recursive: true });
+  cpSync(resolve(dir.dist.next, "node_modules/ankh-ui/lib/auth"), resolve(dir.dist.next, "src/app/_auth"), { recursive: true });
+  const pkgJsonFilename = resolve(dir.dist.next, 'package.json');
+  const pkgJson = JSON.parse(readFileSync(pkgJsonFilename, "utf8"));
+  delete pkgJson.dependencies['ankh-ui'];
+  writeFileSync(pkgJsonFilename, JSON.stringify(pkgJson, null, 2));
+  execSync(`cd ${dir.dist.next} && pnpm install --no-frozen-lockfile`);
+  console.log('✅ ankh-ui UI\'s installed');
+}
+function finishSetup() {
+
   console.log('✅ Code files formatted');
   console.log("\nREADY! Run: 'cd next && pnpm run dev'\n");
 }
@@ -189,5 +210,7 @@ function finishSetup() {
   await installStyles(config);
   installAdditionalPackages();
   installPages(config);
+  installPackagesExec();
+  installUis();
   finishSetup();
 })();
