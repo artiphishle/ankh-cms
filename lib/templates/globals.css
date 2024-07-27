@@ -5,10 +5,42 @@ html {
 }
 
 html,
-body {
+body,
+main {
+  display: flex;
+  width: 100vw;
   margin: 0;
   padding: 0;
   height: 100%;
+}
+
+body {
+  flex-direction: column;
+}
+
+main {
+  flex: 1
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-align: left;
+  font-weight: 700;
+  margin: 2rem auto 1rem;
+}
+
+h1 {
+  font-size: 2.4rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-size: 1.4rem
 }
 
 /** @theme light */
@@ -27,7 +59,7 @@ body {
 
 @media only screen and (min-width: 600px) {
   body {
-    display: flex;
+    flex-direction: row;
   }
 
   [data-ui='nav'] {
