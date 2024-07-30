@@ -12,8 +12,8 @@ importers:
         specifier: ^1.3.0
         version: 1.3.0(postcss@8.4.31)
       ankh-ui:
-        specifier: ^1.6.29
-        version: 1.6.29
+        specifier: ^1.6.30
+        version: 1.6.30
       cssnano:
         specifier: ^7.0.4
         version: 7.0.4(postcss@8.4.31)
@@ -428,8 +428,8 @@ packages:
     resolution: {integrity: sha512-Sbk2dlBnLtyRff3ET9P/bwrDwOJU9a3oOFpomWUbNE45VU5/9Nlzo/P2VgoTwYHHdk4xGCUh6Y8h/WuW/YBvBw==}
     engines: {node: ^20.15.x, pnpm: ^9.5.x}
 
-  ankh-ui@1.6.29:
-    resolution: {integrity: sha512-LdyMrLE4xWcEm50LXFaDs9/W3hLe2w0hWtF/9VFive9l8ZGa+qLeIgMhAM1tVtN/uw85M6HBLAO3JH6jSf4sGQ==}
+  ankh-ui@1.6.30:
+    resolution: {integrity: sha512-XfmaJwUqc2kN/9imbyqN9ceqLwQEksTZK8RPI3PemilavBt2yLiuHgQiGkYpdHU11/+uh+ZyYiGrF9eUeFZD3w==}
     engines: {node: ^20.15.x, pnpm: ^9.5.x}
 
   ansi-regex@5.0.1:
@@ -1655,7 +1655,7 @@ snapshots:
 
   ankh-types@1.0.6: {}
 
-  ankh-ui@1.6.29:
+  ankh-ui@1.6.30:
     dependencies:
       ahooks: 3.8.0(react@18.3.1)
       ankh-hooks: 1.0.8
