@@ -1,6 +1,6 @@
 // 'use server';
 // import 'server-only';
-import { IAnkhCmsConfig, TStyle } from 'ankh-types';
+import { EAnkhColorTone, IAnkhCmsConfig, TStyle } from 'ankh-types';
 
 const nav = {
   ui: 'AnkhUiNav',
@@ -77,7 +77,7 @@ export const config: IAnkhCmsConfig = {
               ui: 'AnkhUiHtml', p: {}, uis: [
                 { ui: 'AnkhUiHeading', p: { level: 'h1', text: 'Theme' } },
                 { ui: 'AnkhUiHeading', p: { level: 'h2', text: 'Colors' } },
-                { ui: 'AnkhUiColorPaletteGenerator', p: {} },
+                { ui: 'AnkhUiColorPaletteGenerator', p: { tone: EAnkhColorTone.Jewel } },
                 { ui: 'AnkhUiColorWheel', p: {} },
                 { ui: 'AnkhUiColorHue', p: { color: 'lab(20 -10 -50)' } },
               ],
