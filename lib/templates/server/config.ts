@@ -32,8 +32,6 @@ const styles: TStyle[] = [
   ['body', 'background-color', '#fff'],
   ['body', 'text-align', 'center'],
   ['body', 'color', '#323235'],
-  ['img', 'text-align', 'center'],
-  ['img', 'margin-top', '40vh'],
   ['body > header', 'padding', '1rem'],
   ['body > header', 'background-color', '#222'],
   ["[data-ui='accordion']", 'background-color', '#cdcdd1'],

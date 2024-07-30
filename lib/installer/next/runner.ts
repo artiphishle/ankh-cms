@@ -200,7 +200,7 @@ function installUis() {
 /** @todo Put this to static file function */
 function installLucideIcons() {
   mkdirSync(resolve(dir.dist.public, "icons"));
-  cpSync(resolve(dir.dist.next, 'node_modules/lucide-static/icons'), resolve(dir.dist.public), { recursive: true });
+  cpSync(resolve(dir.dist.next, 'node_modules/lucide-static/icons'), resolve(dir.dist.public, 'icons'), { recursive: true });
 }
 
 (async function () {

@@ -52,6 +52,8 @@ summary::marker {
   display: none;
 }
 
+/** @ui Image */
+
 /** @theme light */
 [data-theme='light'],
 [data-theme='light'] body {
