@@ -4,6 +4,7 @@ import {
   copyFileSync,
   cpSync,
   existsSync,
+  mkdir,
   mkdirSync,
   readFileSync,
   rmSync,
@@ -153,7 +154,7 @@ function installAdditionalPackages() {
   pkgJson.dependencies['ankh-ui'] = 'latest';
   pkgJson.dependencies['ankh-hooks'] = 'latest';
   pkgJson.dependencies['next-themes'] = 'latest';
-  pkgJson.dependencies['lucide-react'] = 'latest';
+  pkgJson.dependencies['lucide-static'] = 'latest';
   pkgJson.dependencies['react-grid-gallery'] = 'latest';
   pkgJson.dependencies['ahooks'] = 'latest';
   pkgJson.dependencies['server-only'] = 'latest';
@@ -179,9 +180,7 @@ function installPackagesExec() {
   execSync(
     `cd ${dir.dist.next} && prettier --write . && pnpm install --no-frozen-lockfile`
   );
-  console.log(
-    '✅ Additional packages installed: ankh-ui, next-themes, server-only'
-  );
+  console.log('✅ Code files formatted');
 }
 function installUis() {
   mkdirSync(resolve(dir.dist.next, "src/app/_uis"));
@@ -191,14 +190,17 @@ function installUis() {
   const pkgJsonFilename = resolve(dir.dist.next, 'package.json');
   const pkgJson = JSON.parse(readFileSync(pkgJsonFilename, "utf8"));
   delete pkgJson.dependencies['ankh-ui'];
-  writeFileSync(pkgJsonFilename, JSON.stringify(pkgJson, null, 2));
-  execSync(`cd ${dir.dist.next} && pnpm install --no-frozen-lockfile`);
-  console.log('✅ ankh-ui UI\'s installed');
-}
-function finishSetup() {
 
-  console.log('✅ Code files formatted');
-  console.log("\nREADY! Run: 'cd next && pnpm run dev'\n");
+  execSync(`cd ${dir.dist.next} && pnpm install --no-frozen-lockfile`);
+
+  writeFileSync(pkgJsonFilename, JSON.stringify(pkgJson, null, 2));
+  console.log('✅ ankh-ui UI\'s installed');
+
+}
+/** @todo Put this to static file function */
+function installLucideIcons() {
+  mkdirSync(resolve(dir.dist.public, "icons"));
+  cpSync(resolve(dir.dist.next, 'node_modules/lucide-static/icons'), resolve(dir.dist.public), { recursive: true });
 }
 
 (async function () {
@@ -212,5 +214,6 @@ function finishSetup() {
   installPages(config);
   installPackagesExec();
   installUis();
-  finishSetup();
+  installLucideIcons();
+  execSync("cd next && pnpm run dev")
 })();

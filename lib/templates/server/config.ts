@@ -1,6 +1,6 @@
 // 'use server';
 // import 'server-only';
-import { EAnkhColorUnit, IAnkhCmsConfig, TStyle } from 'ankh-types';
+import { IAnkhCmsConfig, TStyle } from 'ankh-types';
 
 const nav = {
   ui: 'AnkhUiNav',
@@ -75,17 +75,15 @@ export const config: IAnkhCmsConfig = {
           ui: 'AnkhUiHtml',
           p: { tagName: 'main' },
           uis: [
-            { ui: 'AnkhUiHeading', p: { level: 'h1', text: 'Ankh_Theming' } },
-            { ui: 'AnkhUiHeading', p: { level: 'h2', text: 'Colors' } },
-            { ui: 'AnkhUiHeading', p: { level: 'h3', text: 'Primary' } },
-            { ui: 'AnkhUiColorHue', p: { color: 'lab(20 -10 -50)' } },
-            { ui: 'AnkhUiHeading', p: { level: 'h3', text: 'Complementary' } },
-            { ui: 'AnkhUiColorHue', p: { color: 'lab(20 -10 -50)' } },
-            { ui: 'AnkhUiHeading', p: { level: 'h3', text: 'Accent' } },
-            { ui: 'AnkhUiColorHue', p: { color: 'lab(20 -10 -50)' } },
-            { ui: 'AnkhUiHeading', p: { level: 'h3', text: 'Base' } },
-            { ui: 'AnkhUiColorHue', p: { color: 'lab(20 -10 -50)' } },
-          ],
+            {
+              ui: 'AnkhUiHtml', p: {}, uis: [
+                { ui: 'AnkhUiHeading', p: { level: 'h1', text: 'Theme' } },
+                { ui: 'AnkhUiHeading', p: { level: 'h2', text: 'Colors' } },
+                { ui: 'AnkhUiColorPaletteGenerator', p: {} },
+                { ui: 'AnkhUiColorWheel', p: {} },
+                { ui: 'AnkhUiColorHue', p: { color: 'lab(20 -10 -50)' } },
+              ],
+            }]
         },
       ],
     },
