@@ -12,8 +12,8 @@ importers:
         specifier: ^1.3.0
         version: 1.3.0(postcss@8.4.31)
       ankh-ui:
-        specifier: ^1.6.34
-        version: 1.6.34
+        specifier: ^1.7.0
+        version: 1.7.0
       cssnano:
         specifier: ^7.0.4
         version: 7.0.4(postcss@8.4.31)
@@ -420,16 +420,16 @@ packages:
   ankh-css@1.3.0:
     resolution: {integrity: sha512-t+CVUwaC7M0vR0qiVcYM4sDV6dDYFrD9RBWjMAM0WBwdSFUCyhbbG5e/+Cpdmfm2SvnnhWTiuDSJOfcGyGUgXQ==}
 
-  ankh-hooks@1.0.8:
-    resolution: {integrity: sha512-LWpF+aPIFCsp5Av4z97TYjZJ+ry5BBSFcC/ejx7tQmjpCdAcVJT7JqmUu6T4a4t383lAxpE47PMahmCeYhbooA==}
+  ankh-hooks@1.0.9:
+    resolution: {integrity: sha512-TctJtQeG0I993y5/F54JIn4vM7/HzLgkkesfrbBS6ZEA6InDGyOK5PjzOOLp/1pHBgEUm2AJKjp9qB+MBmW01Q==}
     engines: {node: ^20.15.x, pnpm: ^9.5.x}
 
   ankh-types@1.0.6:
     resolution: {integrity: sha512-Sbk2dlBnLtyRff3ET9P/bwrDwOJU9a3oOFpomWUbNE45VU5/9Nlzo/P2VgoTwYHHdk4xGCUh6Y8h/WuW/YBvBw==}
     engines: {node: ^20.15.x, pnpm: ^9.5.x}
 
-  ankh-ui@1.6.34:
-    resolution: {integrity: sha512-9EBCpDz9nDkRuAKX+o/69Kxik9rzyQ7uYj6PtCnNMVigNzUPHIyNu6dI1xdgK3qmOI/1Nas9gTGHDeQ6UhRK1A==}
+  ankh-ui@1.7.0:
+    resolution: {integrity: sha512-fQN1aGXKVltBdzTyQj1LsEKhBDRtyaTpm8rVCiFi+ZjEVbiKTj8RSLRfMGETQzurECd965rudUxl8VCNvlc3vw==}
     engines: {node: ^20.15.x, pnpm: ^9.5.x}
 
   ansi-regex@5.0.1:
@@ -1372,6 +1372,10 @@ packages:
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
+  uuid@10.0.0:
+    resolution: {integrity: sha512-8XkAphELsDnEGrDxUOHB3RGvXz6TeuYSGEZBOjtTtPm2lwhGBjLgOzLHB63IUWfBpNucQjND6d3AOudO+H3RWQ==}
+    hasBin: true
+
   uuid@8.3.2:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
     hasBin: true
@@ -1645,7 +1649,7 @@ snapshots:
     transitivePeerDependencies:
       - postcss
 
-  ankh-hooks@1.0.8:
+  ankh-hooks@1.0.9:
     dependencies:
       '@types/react': 18.3.3
       '@types/react-dom': 18.3.0
@@ -1655,10 +1659,10 @@ snapshots:
 
   ankh-types@1.0.6: {}
 
-  ankh-ui@1.6.34:
+  ankh-ui@1.7.0:
     dependencies:
       ahooks: 3.8.0(react@18.3.1)
-      ankh-hooks: 1.0.8
+      ankh-hooks: 1.0.9
       lucide-react: 0.412.0(react@18.3.1)
       next: 14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
@@ -1666,7 +1670,7 @@ snapshots:
       react-grid-gallery: 1.0.1(react@18.3.1)
       react-use: 17.5.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-useportal: 1.0.19(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      uuidv4: 6.2.13
+      uuid: 10.0.0
     transitivePeerDependencies:
       - '@babel/core'
       - '@opentelemetry/api'
@@ -2610,6 +2614,8 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
 
   util-deprecate@1.0.2: {}
+
+  uuid@10.0.0: {}
 
   uuid@8.3.2: {}
 

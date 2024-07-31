@@ -52,6 +52,12 @@ summary::marker {
   display: none;
 }
 
+/** @ui Form */
+input,
+select {
+  padding: 0.4rem;
+}
+
 /** @theme light */
 [data-theme='light'],
 [data-theme='light'] body {

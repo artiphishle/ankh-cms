@@ -35,9 +35,9 @@ const dir = {
 };
 
 async function importConfig() {
-  const { config } = await import("../../templates/server/config");
+  const { getConfig } = await import("../../templates/contexts/ConfigContext");
   console.log(`✅ Dynamically imported config file`);
-  return config;
+  return getConfig();
 }
 function printTitle() {
   console.log();
@@ -114,17 +114,10 @@ function installNextJs() {
 
   console.log('✅ Next.js app installed & configured');
 }
-function installServerActions() {
-  mkdirSync(resolve(dir.dist.next, 'src/app/_server'));
-  copyFileSync(
-    resolve(dir.src.libTpl, "server/config.ts"),
-    resolve(dir.dist.next, 'src/app/_server/config.ts')
-  );
-  copyFileSync(
-    resolve(dir.src.libTpl, 'server/fetchConfig.ts'),
-    resolve(dir.dist.next, 'src/app/_server/fetchConfig.ts')
-  );
-  console.log('✅ Installed Server Actions');
+function installContextsAndProviders() {
+  cpSync(resolve(dir.src.libTpl, "contexts"), resolve(dir.dist.next, 'src/app'), { recursive: true });
+  cpSync(resolve(dir.src.libTpl, 'providers'), resolve(dir.dist.next, 'src/app'), { recursive: true });
+  console.log('✅ Installed Contexts & Providers');
 }
 function installStaticFiles(config: IAnkhCmsConfig) {
   config.public?.forEach(({ name, files }) => {
@@ -207,7 +200,7 @@ function installLucideIcons() {
   printTitle();
   const config = await importConfig();
   installNextJs();
-  installServerActions();
+  installContextsAndProviders();
   installStaticFiles(config);
   await installStyles(config);
   installAdditionalPackages();
