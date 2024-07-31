@@ -1,22 +1,21 @@
 import { basename, resolve } from 'path';
-import { execSync } from 'child_process';
+import { execSync, spawnSync } from 'child_process';
 import {
-  copyFileSync,
   cpSync,
   existsSync,
-  mkdir,
   mkdirSync,
   readFileSync,
   rmSync,
   writeFileSync,
 } from 'fs';
+import { getConfig } from "ankh-config";
+import { convertArrayToCss } from 'ankh-css';
 import {
   IAnkhCmsConfig,
   IAnkhCmsPage,
   IAnkhUi,
   TAnkhUiProps,
 } from 'ankh-types';
-import { convertArrayToCss } from 'ankh-css';
 
 const root = {
   src: resolve(process.argv[2]!, "../"),
@@ -35,7 +34,6 @@ const dir = {
 };
 
 async function importConfig() {
-  const { getConfig } = await import("../../templates/contexts/ConfigContext");
   console.log(`✅ Dynamically imported config file`);
   return getConfig();
 }
@@ -114,11 +112,13 @@ function installNextJs() {
 
   console.log('✅ Next.js app installed & configured');
 }
+/*
 function installContextsAndProviders() {
   cpSync(resolve(dir.src.libTpl, "contexts"), resolve(dir.dist.next, 'src/app'), { recursive: true });
   cpSync(resolve(dir.src.libTpl, 'providers'), resolve(dir.dist.next, 'src/app'), { recursive: true });
   console.log('✅ Installed Contexts & Providers');
 }
+*/
 function installStaticFiles(config: IAnkhCmsConfig) {
   config.public?.forEach(({ name, files }) => {
     mkdirSync(resolve(dir.dist.public, name));
@@ -150,8 +150,13 @@ function installAdditionalPackages() {
   pkgJson.dependencies['lucide-static'] = 'latest';
   pkgJson.dependencies['react-grid-gallery'] = 'latest';
   pkgJson.dependencies['ahooks'] = 'latest';
+  pkgJson.dependencies['react'] = 'latest';
+  pkgJson.dependencies['react-dom'] = 'latest';
   pkgJson.dependencies['server-only'] = 'latest';
   pkgJson.devDependencies['ankh-types'] = 'latest';
+  pkgJson.devDependencies['@types/react'] = 'latest';
+  pkgJson.devDependencies['@types/react-dom'] = 'latest';
+  pkgJson.devDependencies['@svgr/webpack'] = 'latest';
 
   writeFileSync(pkgJsonFilename, JSON.stringify(pkgJson, null, 2));
 }
@@ -200,7 +205,7 @@ function installLucideIcons() {
   printTitle();
   const config = await importConfig();
   installNextJs();
-  installContextsAndProviders();
+  // installContextsAndProviders();
   installStaticFiles(config);
   await installStyles(config);
   installAdditionalPackages();
@@ -208,5 +213,5 @@ function installLucideIcons() {
   installPackagesExec();
   installUis();
   installLucideIcons();
-  execSync("cd next && pnpm run dev")
+  spawnSync("cd next && pnpm run dev", { stdio: 'inherit' })
 })();

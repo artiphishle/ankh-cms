@@ -8,12 +8,15 @@ importers:
 
   .:
     dependencies:
+      ankh-config:
+        specifier: ^1.0.5
+        version: 1.0.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       ankh-css:
         specifier: ^1.3.0
         version: 1.3.0(postcss@8.4.31)
       ankh-ui:
-        specifier: ^1.7.0
-        version: 1.7.0
+        specifier: ^1.7.13
+        version: 1.7.13
       cssnano:
         specifier: ^7.0.4
         version: 7.0.4(postcss@8.4.31)
@@ -417,6 +420,12 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
 
+  ankh-config@1.0.5:
+    resolution: {integrity: sha512-IHVeCQNofL7FoD1aeTkS+0vqFzZrnZ7albtyk8JM8TzCuPHHVuTOiBUa59ouAbnd/9J4VWmg9Cz3pZuqI4GBaQ==}
+    peerDependencies:
+      react: ^18.3.1
+      react-dom: ^18.3.1
+
   ankh-css@1.3.0:
     resolution: {integrity: sha512-t+CVUwaC7M0vR0qiVcYM4sDV6dDYFrD9RBWjMAM0WBwdSFUCyhbbG5e/+Cpdmfm2SvnnhWTiuDSJOfcGyGUgXQ==}
 
@@ -428,8 +437,8 @@ packages:
     resolution: {integrity: sha512-Sbk2dlBnLtyRff3ET9P/bwrDwOJU9a3oOFpomWUbNE45VU5/9Nlzo/P2VgoTwYHHdk4xGCUh6Y8h/WuW/YBvBw==}
     engines: {node: ^20.15.x, pnpm: ^9.5.x}
 
-  ankh-ui@1.7.0:
-    resolution: {integrity: sha512-fQN1aGXKVltBdzTyQj1LsEKhBDRtyaTpm8rVCiFi+ZjEVbiKTj8RSLRfMGETQzurECd965rudUxl8VCNvlc3vw==}
+  ankh-ui@1.7.13:
+    resolution: {integrity: sha512-n9Wq2QPWeAS0WH2o2gCr+sGgfhSOrdHUT4d3mHQlPQ4N/NSrCIXqOJvOK0PusEjXLxi1VXOea1jliPSWospTSg==}
     engines: {node: ^20.15.x, pnpm: ^9.5.x}
 
   ansi-regex@5.0.1:
@@ -1643,6 +1652,11 @@ snapshots:
       screenfull: 5.2.0
       tslib: 2.6.3
 
+  ankh-config@1.0.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+
   ankh-css@1.3.0(postcss@8.4.31):
     dependencies:
       cssnano: 7.0.4(postcss@8.4.31)
@@ -1659,9 +1673,10 @@ snapshots:
 
   ankh-types@1.0.6: {}
 
-  ankh-ui@1.7.0:
+  ankh-ui@1.7.13:
     dependencies:
       ahooks: 3.8.0(react@18.3.1)
+      ankh-config: 1.0.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       ankh-hooks: 1.0.9
       lucide-react: 0.412.0(react@18.3.1)
       next: 14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
