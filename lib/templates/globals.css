@@ -4,6 +4,7 @@
 /** @ui Html */
 html {
   font-size: 100%;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 html,
@@ -18,6 +19,11 @@ main {
 
 body {
   flex-direction: column;
+}
+
+body>header {
+  padding: 1rem;
+  background-color: #222;
 }
 
 main {
@@ -78,6 +84,24 @@ select {
   }
 
   [data-ui='nav'] {
+    display: flex;
     flex-direction: column;
+
+  }
+
+  [data-ui='nav'] a:link {
+    color: #fff;
+    text-decoration: none;
+    padding: 1rem;
+  }
+
+  [data-ui='nav'] a.active {
+    background-color: #000;
+  }
+
+  [data-ui='nav'] a>span {
+    display: flex;
+    gap: .3rem;
+    align-items: center;
   }
 }
