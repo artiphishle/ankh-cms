@@ -15,8 +15,8 @@ importers:
         specifier: ^1.3.0
         version: 1.3.0(postcss@8.4.31)
       ankh-ui:
-        specifier: ^1.8.23
-        version: 1.8.23(webpack@5.93.0(esbuild@0.23.0))
+        specifier: ^1.9.23
+        version: 1.9.23(webpack@5.93.0(esbuild@0.23.0))
       cssnano:
         specifier: ^7.0.4
         version: 7.0.4(postcss@8.4.31)
@@ -510,16 +510,16 @@ packages:
   ankh-css@1.3.0:
     resolution: {integrity: sha512-t+CVUwaC7M0vR0qiVcYM4sDV6dDYFrD9RBWjMAM0WBwdSFUCyhbbG5e/+Cpdmfm2SvnnhWTiuDSJOfcGyGUgXQ==}
 
-  ankh-hooks@1.2.0:
-    resolution: {integrity: sha512-U7ZnuxpoxGb/8ABz7zLdFwaaBtB6FbEKb5KEhq80oFPOn1FLnbCAU7Jr12hO9JYEjk3oi4/c/kIhiqWCem0Ysw==}
+  ankh-hooks@1.3.20:
+    resolution: {integrity: sha512-QB9Y1dQ6XuWG+3dZWGfabaVEZKl68XrnqgmOeuDTJYfm67Z00yqiyBSZMJCjkLAaWSI09iO35dYXa9Ngps7W/g==}
     engines: {node: ^20.15.x, pnpm: ^9.5.x}
 
   ankh-types@1.0.9:
     resolution: {integrity: sha512-aALbkbwQnQrqW91AQGqPEriSrsOiSPWPHRHY8Mu7Rix7m05Cr6ValSVL1FrkJSFqYlYpXH5QvfxLg+xlI3W1MA==}
     engines: {node: ^20.15.x, pnpm: ^9.5.x}
 
-  ankh-ui@1.8.23:
-    resolution: {integrity: sha512-GIRRkAkOouicu/b8lEHsgprczE1GzcfnaSYJ+EQ+2YWAAqFZ8+54+FJdrytL59ioTlh3BojCc1RZSGxXAfC4Gg==}
+  ankh-ui@1.9.23:
+    resolution: {integrity: sha512-0bAuM6qv5ZWHUOJmNmvqY1iJQkRIAUI5jTfyDXj7U6qrg0PEHNHgndqgOaRn3HDsKCXBJKJ3qfLqoiYHSIYT5A==}
     engines: {node: ^20.15.x, pnpm: ^9.5.x}
 
   ansi-regex@5.0.1:
@@ -571,6 +571,11 @@ packages:
 
   browserslist@4.23.2:
     resolution: {integrity: sha512-qkqSyistMYdxAcw+CzbZwlBy8AGmS/eEWs+sEV5TnLRGDOL+C5M2EnH6tlZyg0YoAxGJAFKh61En9BR941GnHA==}
+    engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
+    hasBin: true
+
+  browserslist@4.23.3:
+    resolution: {integrity: sha512-btwCFJVjI4YWDNfau8RhZ+B1Q/VLoUITrm3RlP6y1tYGWIOa+InuYiRGXUBXo8nA1qKmHMyLB/iVQg5TT4eFoA==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
 
@@ -2024,7 +2029,7 @@ snapshots:
     transitivePeerDependencies:
       - postcss
 
-  ankh-hooks@1.2.0:
+  ankh-hooks@1.3.20:
     dependencies:
       '@types/react': 18.3.3
       '@types/react-dom': 18.3.0
@@ -2034,11 +2039,11 @@ snapshots:
 
   ankh-types@1.0.9: {}
 
-  ankh-ui@1.8.23(webpack@5.93.0(esbuild@0.23.0)):
+  ankh-ui@1.9.23(webpack@5.93.0(esbuild@0.23.0)):
     dependencies:
       ahooks: 3.8.0(react@18.3.1)
       ankh-config: 1.0.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      ankh-hooks: 1.2.0
+      ankh-hooks: 1.3.20
       lucide-react: 0.412.0(react@18.3.1)
       next: 14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
@@ -2097,6 +2102,13 @@ snapshots:
       electron-to-chromium: 1.5.4
       node-releases: 2.0.18
       update-browserslist-db: 1.1.0(browserslist@4.23.2)
+
+  browserslist@4.23.3:
+    dependencies:
+      caniuse-lite: 1.0.30001646
+      electron-to-chromium: 1.5.4
+      node-releases: 2.0.18
+      update-browserslist-db: 1.1.0(browserslist@4.23.3)
 
   buffer-from@1.1.2: {}
 
@@ -3108,6 +3120,12 @@ snapshots:
       escalade: 3.1.2
       picocolors: 1.0.1
 
+  update-browserslist-db@1.1.0(browserslist@4.23.3):
+    dependencies:
+      browserslist: 4.23.3
+      escalade: 3.1.2
+      picocolors: 1.0.1
+
   uri-js@4.4.1:
     dependencies:
       punycode: 2.3.1
@@ -3146,7 +3164,7 @@ snapshots:
       '@webassemblyjs/wasm-parser': 1.12.1
       acorn: 8.12.1
       acorn-import-attributes: 1.9.5(acorn@8.12.1)
-      browserslist: 4.23.2
+      browserslist: 4.23.3
       chrome-trace-event: 1.0.4
       enhanced-resolve: 5.17.1
       es-module-lexer: 1.5.4

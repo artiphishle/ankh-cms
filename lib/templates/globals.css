@@ -64,6 +64,13 @@ select {
   padding: 0.4rem;
 }
 
+/** @ui grid */
+[data-ui='grid']>div {
+  background-color: rgba(0, 0, 0, .3);
+  border: 1px solid #aaa;
+  padding: 1rem;
+}
+
 /** @theme light */
 [data-theme='light'],
 [data-theme='light'] body {
@@ -89,7 +96,7 @@ select {
 
   }
 
-  [data-ui='nav'] a:link {
+  [data-ui='nav'] a {
     color: #fff;
     text-decoration: none;
     padding: 1rem;
