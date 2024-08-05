@@ -85,30 +85,32 @@ select {
   color: #fff;
 }
 
+[data-ui='nav'] {
+  display: flex;
+}
+
+[data-ui='nav'] a {
+  color: #fff;
+  text-decoration: none;
+  padding: 1rem;
+}
+
+[data-ui='nav'] a.active {
+  background-color: #000;
+}
+
+[data-ui='nav'] a>span {
+  display: flex;
+  gap: .3rem;
+  align-items: center;
+}
+
 @media only screen and (min-width: 600px) {
   body {
     flex-direction: row;
   }
 
   [data-ui='nav'] {
-    display: flex;
     flex-direction: column;
-
-  }
-
-  [data-ui='nav'] a {
-    color: #fff;
-    text-decoration: none;
-    padding: 1rem;
-  }
-
-  [data-ui='nav'] a.active {
-    background-color: #000;
-  }
-
-  [data-ui='nav'] a>span {
-    display: flex;
-    gap: .3rem;
-    align-items: center;
   }
 }
