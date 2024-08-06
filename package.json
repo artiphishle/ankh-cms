@@ -7,9 +7,9 @@
     "url": "https://github.com/artiphishle/ankh-cms/issues"
   },
   "dependencies": {
-    "ankh-config": "^1.1.3",
+    "ankh-config": "^1.1.5",
     "ankh-css": "^1.3.0",
-    "ankh-ui": "^1.10.6",
+    "ankh-ui": "^1.10.7",
     "cssnano": "^7.0.4",
     "next-themes": "^0.3.0",
     "react": "^18.3.1",
@@ -60,5 +60,5 @@
     "clean": true
   },
   "types": "dist/index.d.ts",
-  "version": "1.8.3"
+  "version": "1.8.4"
 }

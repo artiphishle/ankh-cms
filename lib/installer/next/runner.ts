@@ -131,20 +131,17 @@ async function installStyles(config: IAnkhCmsConfig) {
   if (!config.styles) return;
 
   const style = await convertArrayToCss(config.styles);
-  const css = readFileSync(resolve(dir.src.libTpl, 'globals.css'), 'utf8');
+  const css = readFileSync(resolve(dir.dist.next, "node_modules/ankh-config/lib/styles/globals.css"), 'utf8');
+
   writeFileSync(resolve(dir.dist.next, 'src/app/globals.css'), `${css}\n\n${style}`);
 
-  // Copy Reset CSS
-  cpSync(
-    resolve(dir.src.libTpl, 'meyer.reset.css'),
-    resolve(dir.dist.next, 'src/app/meyer.reset.css')
-  );
   console.log(`✅ Applied CSS`);
 }
 function installAdditionalPackages() {
   const pkgJsonFilename = resolve(dir.dist.next, 'package.json');
   const pkgJson = JSON.parse(readFileSync(pkgJsonFilename, 'utf8'));
   pkgJson.dependencies['ankh-ui'] = 'latest';
+  pkgJson.dependencies['ankh-config'] = 'latest';
   pkgJson.dependencies['ankh-hooks'] = 'latest';
   pkgJson.dependencies['next-themes'] = 'latest';
   pkgJson.dependencies['lucide-static'] = 'latest';
@@ -207,11 +204,11 @@ function installLucideIcons() {
   installNextJs();
   // installContextsAndProviders();
   installStaticFiles(config);
-  await installStyles(config);
   installAdditionalPackages();
   installPages(config);
   installPackagesExec();
   installUis();
+  await installStyles(config);
   installLucideIcons();
   spawnSync("cd next && pnpm run dev", { stdio: 'inherit' })
 })();
