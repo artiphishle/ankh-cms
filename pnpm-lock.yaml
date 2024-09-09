@@ -15,8 +15,8 @@ importers:
         specifier: ^1.3.0
         version: 1.3.0(postcss@8.4.31)
       ankh-ui:
-        specifier: ^1.14.24
-        version: 1.14.24(webpack@5.93.0(esbuild@0.23.1))
+        specifier: ^1.14.28
+        version: 1.14.28(webpack@5.93.0(esbuild@0.23.1))
       cssnano:
         specifier: ^7.0.6
         version: 7.0.6(postcss@8.4.31)
@@ -43,8 +43,8 @@ importers:
         specifier: ^18.3.0
         version: 18.3.0
       ankh-types:
-        specifier: ^1.1.2
-        version: 1.1.2
+        specifier: ^1.1.3
+        version: 1.1.3
       server-only:
         specifier: ^0.0.1
         version: 0.0.1
@@ -548,16 +548,20 @@ packages:
   ankh-css@1.3.0:
     resolution: {integrity: sha512-t+CVUwaC7M0vR0qiVcYM4sDV6dDYFrD9RBWjMAM0WBwdSFUCyhbbG5e/+Cpdmfm2SvnnhWTiuDSJOfcGyGUgXQ==}
 
-  ankh-hooks@1.4.3:
-    resolution: {integrity: sha512-9iKFzzgADFgeZ1C7W4alkySesNoaOldgax7+un65gy7GlBgslMo6aJgVG6KPgWIqK5k+ORub8djr85cwHC+L6A==}
+  ankh-hooks@1.4.5:
+    resolution: {integrity: sha512-QE4Pe7vftXHJn7PFJgdopkeCgZNcnrjfIQRCgMbSHnAmmZ41D67OHRIdYd9NT/1PzWPWk9K3OsQ0d3Z8Ys306Q==}
     engines: {node: ^20.15.x, pnpm: ^9.5.x}
 
-  ankh-types@1.1.2:
-    resolution: {integrity: sha512-ZAXt255KEBxt9INWadJ6sL2yKr32Xo0q3Vf0tQgod9nLGcyL1DBlfF1pH32Iwc4oofL+FSLX4O8vwBbiK2qiMg==}
+  ankh-hooks@1.4.6:
+    resolution: {integrity: sha512-kqIE0QYZaCfNanoTj5m/tr22Lpa0rKz4Bl4o1cPAj0LZ8UITCJhZVYXU7uv2gwHDXPAKG8u5LaOr/OhkR2Bvow==}
     engines: {node: ^20.15.x, pnpm: ^9.5.x}
 
-  ankh-ui@1.14.24:
-    resolution: {integrity: sha512-KTm96bPX+p+kQH5orVoLyHZZa+uLHutDmkfdj/l52AmWE0b7CT9k6VAviIMpWDP+4qTnuiAcxpEoZUDUXnDgzA==}
+  ankh-types@1.1.3:
+    resolution: {integrity: sha512-2tY/jFRB46wRlEIxLtQ100IwvEac3xBZNe8aEfwVibuMkBVaCzcya2p8DT4OGchpLu8gG0boC9SxaMfXW5qwSg==}
+    engines: {node: ^20.15.x, pnpm: ^9.5.x}
+
+  ankh-ui@1.14.28:
+    resolution: {integrity: sha512-0wLdCRhhQ3DWKbDYMMGkqcNew6H3guVJ2WX8l6av/0yB1XnMdwRSGcNZUelJPI/mNv1Umz7nmnsV3q6R2vFVBg==}
     engines: {node: ^20.15.x, pnpm: ^9.5.x}
 
   ansi-regex@5.0.1:
@@ -1568,8 +1572,8 @@ packages:
       uglify-js:
         optional: true
 
-  terser@5.31.6:
-    resolution: {integrity: sha512-PQ4DAriWzKj+qgehQ7LK5bQqCFNMmlhjR2PFFLuqGCpuCAauxemVBWwWOxo3UIwWQx8+Pr61Df++r76wDmkQBg==}
+  terser@5.32.0:
+    resolution: {integrity: sha512-v3Gtw3IzpBJ0ugkxEX8U0W6+TnPKRRCWGh1jC/iM/e3Ki5+qvO1L1EAZ56bZasc64aXHwRHNIQEzm6//i5cemQ==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -2097,7 +2101,7 @@ snapshots:
 
   ankh-config@1.3.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
-      ankh-hooks: 1.4.3
+      ankh-hooks: 1.4.5
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
@@ -2107,7 +2111,7 @@ snapshots:
     transitivePeerDependencies:
       - postcss
 
-  ankh-hooks@1.4.3:
+  ankh-hooks@1.4.5:
     dependencies:
       '@types/react': 18.3.5
       '@types/react-dom': 18.3.0
@@ -2115,15 +2119,23 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
       uuidv4: 6.2.13
 
-  ankh-types@1.1.2: {}
+  ankh-hooks@1.4.6:
+    dependencies:
+      '@types/react': 18.3.5
+      '@types/react-dom': 18.3.0
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      uuidv4: 6.2.13
 
-  ankh-ui@1.14.24(webpack@5.93.0(esbuild@0.23.1)):
+  ankh-types@1.1.3: {}
+
+  ankh-ui@1.14.28(webpack@5.93.0(esbuild@0.23.1)):
     dependencies:
       '@react-spring/web': 9.7.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@tanstack/react-table': 8.20.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       ahooks: 3.8.1(react@18.3.1)
       ankh-config: 1.3.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      ankh-hooks: 1.4.3
+      ankh-hooks: 1.4.6
       lucide-react: 0.412.0(react@18.3.1)
       next: 14.2.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
@@ -3118,12 +3130,12 @@ snapshots:
       jest-worker: 27.5.1
       schema-utils: 3.3.0
       serialize-javascript: 6.0.2
-      terser: 5.31.6
+      terser: 5.32.0
       webpack: 5.93.0(esbuild@0.23.1)
     optionalDependencies:
       esbuild: 0.23.1
 
-  terser@5.31.6:
+  terser@5.32.0:
     dependencies:
       '@jridgewell/source-map': 0.3.6
       acorn: 8.12.1
