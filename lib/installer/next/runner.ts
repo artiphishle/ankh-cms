@@ -90,7 +90,7 @@ function installNextJs() {
 
   // Next.js install
   execSync(
-    `pnpm dlx create-next-app@latest ${dir.dist.next} --ts --app --src-dir --no-eslint --no-import-alias --no-tailwind`,
+    `pnpm dlx create-next-app@latest ${dir.dist.next} --ts --app --src-dir --no-eslint --no-import-alias --tailwind`,
     { encoding: 'utf8' }
   );
 
@@ -154,6 +154,8 @@ function installAdditionalPackages() {
   pkgJson.devDependencies['@types/react'] = 'latest';
   pkgJson.devDependencies['@types/react-dom'] = 'latest';
   pkgJson.devDependencies['@svgr/webpack'] = 'latest';
+  pkgJson.devDependencies['@react-spring/web'] = 'latest';
+  pkgJson.devDependencies['@tanstack/react-table'] = 'latest';
 
   writeFileSync(pkgJsonFilename, JSON.stringify(pkgJson, null, 2));
 }
