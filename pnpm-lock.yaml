@@ -15,8 +15,8 @@ importers:
         specifier: ^1.3.0
         version: 1.3.0(postcss@8.4.31)
       ankh-ui:
-        specifier: ^1.14.22
-        version: 1.14.22(webpack@5.93.0(esbuild@0.23.1))
+        specifier: ^1.14.23
+        version: 1.14.23(webpack@5.93.0(esbuild@0.23.1))
       cssnano:
         specifier: ^7.0.6
         version: 7.0.6(postcss@8.4.31)
@@ -556,8 +556,8 @@ packages:
     resolution: {integrity: sha512-ZAXt255KEBxt9INWadJ6sL2yKr32Xo0q3Vf0tQgod9nLGcyL1DBlfF1pH32Iwc4oofL+FSLX4O8vwBbiK2qiMg==}
     engines: {node: ^20.15.x, pnpm: ^9.5.x}
 
-  ankh-ui@1.14.22:
-    resolution: {integrity: sha512-sFbakFqBN5IbjAGmvtNagPUI10zIdKreHXUibR6TjxaeU4b7MfzcKVp06aRsLaXhjjILtL5LbAlYkRCZmx7YPg==}
+  ankh-ui@1.14.23:
+    resolution: {integrity: sha512-YFyakSYUYIcl9YMoySHuFEgxio6SdDpkXjEcnM1VJdSfbTd2L6EQivvPttK9KFBGairrR7pc8czRFqLQuZwgTQ==}
     engines: {node: ^20.15.x, pnpm: ^9.5.x}
 
   ansi-regex@5.0.1:
@@ -2117,7 +2117,7 @@ snapshots:
 
   ankh-types@1.1.2: {}
 
-  ankh-ui@1.14.22(webpack@5.93.0(esbuild@0.23.1)):
+  ankh-ui@1.14.23(webpack@5.93.0(esbuild@0.23.1)):
     dependencies:
       '@react-spring/web': 9.7.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@tanstack/react-table': 8.20.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
