@@ -131,10 +131,9 @@ async function installStyles(config: IAnkhCmsConfig) {
   if (!config.styles) return;
 
   const style = await convertArrayToCss(config.styles);
-  const twCss = "@tailwind base;\n@tailwind components;\n@tailwind utilities;";
   const css = readFileSync(resolve(dir.dist.next, "node_modules/ankh-config/lib/styles/globals.css"), 'utf8');
 
-  writeFileSync(resolve(dir.dist.next, 'src/app/globals.css'), `${twCss}\n\n${css}\n\n${style}`);
+  writeFileSync(resolve(dir.dist.next, 'src/app/globals.css'), `${css}\n\n${style}`);
 
   console.log(`✅ Applied CSS`);
 }
